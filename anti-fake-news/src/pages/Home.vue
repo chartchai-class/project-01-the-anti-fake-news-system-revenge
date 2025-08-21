@@ -37,22 +37,33 @@ watch([filter, pageSize], () => {page.value = 1})
 </script>
 
 <template>
-  <main class="max-w-5xl mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Social Anti-Fake News — Home</h1>
+  <main class="max-w-6xl mx-auto p-6">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-3 bg-gradient-to-r from-zinc-900 via-blue-800 to-purple-800 dark:from-zinc-100 dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent">
+        Social Anti-Fake News
+      </h1>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+        Discover, analyze, and vote on news authenticity
+      </p>
+    </div>
 
-    <section class="mb-4">
+    <section class="mb-6">
       <FilterBar v-model="filter" v-model:pageSize="pageSize" />
     </section>
 
-    <section class="grid gap-4 md:grid-cols-2">
+    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
       <NewsCard v-for="n in items" :key="n.id" :item="n" />
     </section>
 
-    <section class="mt-6">
+    <section class="bg-white/60 dark:bg-zinc-900/60 rounded-2xl p-6 backdrop-blur-sm border border-zinc-200/60 dark:border-zinc-700/60 shadow-sm">
       <Paginator v-model:page="page" :page-count="pageCount" />
-      <p class="mt-2 text-xs text-zinc-500 text-center">
-        Showing {{ items.length }} of {{ filtered.length }} items (Total: {{ allNews.length }})
-      </p>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+          Showing <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ items.length }}</span> of 
+          <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ filtered.length }}</span> items 
+          (Total: <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ allNews.length }}</span>)
+        </p>
+      </div>
     </section>
   </main>
 </template>
