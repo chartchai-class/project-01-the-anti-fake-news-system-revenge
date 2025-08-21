@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import { newsSeed } from '@/data/news'
 import type { NewsItem } from '@/types'
 import NewsCard from '@/components/NewsCard.vue'
@@ -7,6 +7,31 @@ import FilterBar, { type FilterKind } from '@/components/FilterBar.vue'
 import Paginator from '@/components/Paginator.vue'
 
 const allNews = ref<NewsItem[]>(newsSeed)
+const isLoading = ref(false)
+const loadError = ref<string | null>(null)
+
+// 尝试从本地 json-server 加载（若失败则回退到内置种子）
+async function fetchNewsFromApi() {
+  try {
+    isLoading.value = true
+    loadError.value = null
+    const res = await fetch('http://localhost:4000/news')
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const data = await res.json()
+    if (Array.isArray(data) && data.length > 0) {
+      allNews.value = data as NewsItem[]
+    }
+  } catch (e: any) {
+    loadError.value = e?.message || 'Failed to load mock api'
+    allNews.value = newsSeed
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchNewsFromApi()
+})
 
 // 过滤条件 + 每页数量
 const filter = ref<FilterKind>('all')
@@ -46,6 +71,10 @@ watch([filter, pageSize], () => {page.value = 1})
       <FilterBar v-model="filter" v-model:pageSize="pageSize" />
     </div>
 
+    <div v-if="isLoading" class="text-center py-10 text-sm" style="color: var(--color-text-secondary);">Loading from mock API...</div>
+    <div v-else-if="loadError" class="text-center py-10 text-sm" style="color: var(--color-text-secondary);">
+      Mock API unavailable. Showing built-in seed data.
+    </div>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
       <NewsCard v-for="n in items" :key="n.id" :item="n" />
     </div>

@@ -3,6 +3,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-import './style.css'            // 或者你的 tailwind.css
+import './assets/tailwind.css'            // 使用 Tailwind 样式
 
 createApp(App).use(createPinia()).use(router).mount('#app')

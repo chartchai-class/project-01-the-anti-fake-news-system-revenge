@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { newsSeed } from '@/data/news'
 import type { Comment } from '@/types'
+import { useCommentsStore } from '@/stores/comments'
 
 const route = useRoute()
 const router = useRouter()
@@ -28,6 +29,7 @@ const errors = ref({
 // 投票状态
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
+const commentsStore = useCommentsStore()
 
 // 计算属性
 const isValidForm = computed(() => {
@@ -100,10 +102,8 @@ const submitVote = async () => {
     vote: formData.value.vote === 'Fake' ? 'fake' : 'real'
   }
 
-  // 获取现有评论或创建新数组
-  const existingComments = JSON.parse(localStorage.getItem(`comments_${newsId}`) || '[]')
-  existingComments.unshift(newComment) // 将新评论添加到开头
-  localStorage.setItem(`comments_${newsId}`, JSON.stringify(existingComments))
+  // 使用 Pinia 评论 store 持久化
+  commentsStore.add(newsId, newComment)
 
   // 更新新闻投票数据到 localStorage
   const newsData = JSON.parse(localStorage.getItem(`news_${newsId}`) || '{}')
@@ -139,7 +139,7 @@ const resetForm = () => {
       class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl card-surface border shadow-sm hover:shadow-md transition-all duration-200"
       style="border-color: rgba(94, 82, 64, 0.12); color: var(--color-text);"
       @click="goBackToNews">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
       </svg>
       Back to News Details
@@ -166,7 +166,7 @@ const resetForm = () => {
       <!-- 新闻信息 -->
       <div v-if="newsItem" class="text-center mb-8">
         <div class="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center btn-primary">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
         </div>
@@ -272,7 +272,7 @@ const resetForm = () => {
             :disabled="!canSubmit"
             class="flex-1 px-6 py-3 rounded-xl text-base font-medium btn-primary shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
             <span v-if="isSubmitting" class="flex items-center justify-center gap-2">
-              <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+              <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>

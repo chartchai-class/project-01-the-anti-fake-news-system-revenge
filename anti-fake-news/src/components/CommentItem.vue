@@ -94,7 +94,7 @@ const formatDate = (dateString: string) => {
     <!-- 证据图片 -->
     <div v-if="props.comment.imageUrl" class="mb-4">
       <div class="flex items-center gap-2 mb-2">
-        <svg class="w-4 h-4" style="color: var(--color-text-secondary);" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-3.5 h-3.5" style="color: var(--color-text-secondary);" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
         </svg>
         <p class="text-xs font-medium" style="color: var(--color-text-secondary);">Evidence Provided:</p>
@@ -108,7 +108,7 @@ const formatDate = (dateString: string) => {
         />
         <!-- 图片遮罩层 -->
         <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200 flex items-center justify-center">
-          <svg class="w-8 h-8 text-white opacity-0 hover:opacity-100 transition-opacity duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-white opacity-0 hover:opacity-100 transition-opacity duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
           </svg>
         </div>
