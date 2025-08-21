@@ -2,6 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { newsSeed } from '@/data/news'
+import type { Comment } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
@@ -88,6 +89,27 @@ const submitVote = async () => {
       newsItem.nonFakeVotes++
     }
   }
+
+  // 保存用户评论到 localStorage
+  const newComment: Comment = {
+    id: Date.now().toString(), // 生成唯一ID
+    username: 'Current User', // 这里应该是实际的用户名
+    comment: formData.value.comment,
+    imageUrl: formData.value.imageUrl || undefined,
+    createdAt: new Date().toISOString(),
+    vote: formData.value.vote === 'Fake' ? 'fake' : 'real'
+  }
+
+  // 获取现有评论或创建新数组
+  const existingComments = JSON.parse(localStorage.getItem(`comments_${newsId}`) || '[]')
+  existingComments.unshift(newComment) // 将新评论添加到开头
+  localStorage.setItem(`comments_${newsId}`, JSON.stringify(existingComments))
+
+  // 更新新闻投票数据到 localStorage
+  const newsData = JSON.parse(localStorage.getItem(`news_${newsId}`) || '{}')
+  newsData.fakeVotes = newsItem?.fakeVotes || 0
+  newsData.nonFakeVotes = newsItem?.nonFakeVotes || 0
+  localStorage.setItem(`news_${newsId}`, JSON.stringify(newsData))
 
   isSubmitting.value = false
   showSuccess.value = true

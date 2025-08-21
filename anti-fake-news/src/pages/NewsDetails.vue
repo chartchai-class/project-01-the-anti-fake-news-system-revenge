@@ -10,47 +10,87 @@ const router = useRouter()
 const id = String(route.params.id)
 const item = newsSeed.find(n => n.id === id)
 
-// Mock comments data for demonstration
-const mockComments: Comment[] = [
-  {
-    id: '1',
-    username: 'John Doe',
-    comment: 'This news seems credible based on the sources provided. The evidence is well-documented.',
-    imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop',
-    createdAt: '2025-01-20T10:30:00Z',
-    vote: 'real' as const
-  },
-  {
-    id: '2',
-    username: 'Jane Smith',
-    comment: 'I have some concerns about the timeline mentioned in this article. It doesn\'t align with other reports.',
-    imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
-    createdAt: '2025-01-20T11:15:00Z',
-    vote: 'fake' as const
-  },
-  {
-    id: '3',
-    username: 'Mike Johnson',
-    comment: 'The reporter has a good track record. I\'m inclined to believe this story.',
-    createdAt: '2025-01-20T12:00:00Z',
-    vote: 'real' as const
-  },
-  {
-    id: '4',
-    username: 'Sarah Wilson',
-    comment: 'I found some inconsistencies in the data presented. This needs more verification.',
-    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
-    createdAt: '2025-01-20T13:45:00Z',
-    vote: 'fake' as const
-  },
-  {
-    id: '5',
-    username: 'David Brown',
-    comment: 'This is a well-researched piece with multiple credible sources. I trust this information.',
-    createdAt: '2025-01-20T14:20:00Z',
-    vote: 'real' as const
+import { ref, onMounted, watch } from 'vue'
+
+// 动态获取评论数据
+const comments = ref<Comment[]>([])
+
+// 从 localStorage 加载评论数据
+const loadComments = () => {
+  if (id) {
+    const storedComments = localStorage.getItem(`comments_${id}`)
+    if (storedComments) {
+      comments.value = JSON.parse(storedComments)
+    } else {
+      // 如果没有存储的评论，使用默认的模拟数据
+      comments.value = [
+        {
+          id: '1',
+          username: 'John Doe',
+          comment: 'This news seems credible based on the sources provided. The evidence is well-documented.',
+          imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop',
+          createdAt: '2025-01-20T10:30:00Z',
+          vote: 'real' as const
+        },
+        {
+          id: '2',
+          username: 'Jane Smith',
+          comment: 'I have some concerns about the timeline mentioned in this article. It doesn\'t align with other reports.',
+          imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+          createdAt: '2025-01-20T11:15:00Z',
+          vote: 'fake' as const
+        },
+        {
+          id: '3',
+          username: 'Mike Johnson',
+          comment: 'The reporter has a good track record. I\'m inclined to believe this story.',
+          createdAt: '2025-01-20T12:00:00Z',
+          vote: 'real' as const
+        },
+        {
+          id: '4',
+          username: 'Sarah Wilson',
+          comment: 'I found some inconsistencies in the data presented. This needs more verification.',
+          imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+          createdAt: '2025-01-20T13:45:00Z',
+          vote: 'fake' as const
+        },
+        {
+          id: '5',
+          username: 'David Brown',
+          comment: 'This is a well-researched piece with multiple credible sources. I trust this information.',
+          createdAt: '2025-01-20T14:20:00Z',
+          vote: 'real' as const
+        }
+      ]
+    }
   }
-]
+}
+
+// 监听路由变化，重新加载评论
+watch(() => route.params.id, () => {
+  if (route.params.id) {
+    loadComments()
+  }
+})
+
+// 获取更新的投票计数
+const getUpdatedVoteCount = (type: 'fake' | 'non-fake') => {
+  if (id) {
+    const storedNewsData = localStorage.getItem(`news_${id}`)
+    if (storedNewsData) {
+      const newsData = JSON.parse(storedNewsData)
+      return type === 'fake' ? newsData.fakeVotes : newsData.nonFakeVotes
+    }
+  }
+  // 如果没有存储的数据，返回原始数据
+  return type === 'fake' ? item?.fakeVotes || 0 : item?.nonFakeVotes || 0
+}
+
+// 组件挂载时加载评论
+onMounted(() => {
+  loadComments()
+})
 </script>
 
 <template>
@@ -110,14 +150,14 @@ const mockComments: Comment[] = [
     <!-- Voting Results Section -->
     <div v-if="item" class="card-surface rounded-2xl p-8 shadow-sm">
       <VoteSummary 
-        :fake-votes="item.fakeVotes" 
-        :non-fake-votes="item.nonFakeVotes" 
+        :fake-votes="getUpdatedVoteCount('fake')" 
+        :non-fake-votes="getUpdatedVoteCount('non-fake')" 
       />
     </div>
 
     <!-- Comments Section -->
     <div v-if="item" class="card-surface rounded-2xl p-8 shadow-sm">
-      <CommentList :comments="mockComments" :page-size="3" />
+      <CommentList :comments="comments" :page-size="3" />
     </div>
     
     <div v-else class="text-center py-20">
