@@ -24,32 +24,33 @@ watch(() => props.pageSize, v => { localSize.value = v })
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-4 p-4 bg-white/60 dark:bg-zinc-900/60 rounded-2xl border border-zinc-200/60 dark:border-zinc-700/60 backdrop-blur-sm shadow-sm">
-    <div class="inline-flex rounded-xl border border-zinc-200 dark:border-zinc-700 overflow-hidden shadow-sm bg-white dark:bg-zinc-900">
+  <div class="flex flex-wrap items-center gap-4 p-4 card-surface rounded-2xl">
+    <div class="inline-flex rounded-xl border overflow-hidden shadow-sm" style="border-color: rgba(94, 82, 64, 0.12); background-color: var(--color-surface);">
       <button v-for="f in ['all','fake','non-fake','unknown']"
               :key="f"
-              class="px-4 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
+              class="px-4 py-2 text-sm font-medium transition-all duration-200"
               :class="{
-                'bg-gradient-to-r from-zinc-900 to-zinc-800 text-white shadow-sm': localFilter===f,
-                'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800': localFilter!==f
+                'btn-primary': localFilter===f
               }"
+              :style="localFilter!==f ? {color: 'var(--color-text-secondary)'} : {}"
               @click="localFilter = f as any">
-        {{ f }}
+        {{ f === 'all' ? 'All News' : f === 'fake' ? 'Fake News' : f === 'non-fake' ? 'Real News' : 'Pending News' }}
       </button>
     </div>
 
-    <label class="flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+    <label class="flex items-center gap-2 text-sm font-medium" style="color: var(--color-text);">
       <span class="flex items-center gap-1.5">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
         </svg>
-        每页：
+        Per Page:
       </span>
       <select v-model.number="localSize"
-              class="px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 shadow-sm hover:shadow-md transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        <option :value="5">5</option>
-        <option :value="10">10</option>
-        <option :value="20">20</option>
+              class="px-3 py-1.5 rounded-lg border shadow-sm transition-all duration-200"
+              style="border-color: rgba(94, 82, 64, 0.12); background-color: var(--color-surface); color: var(--color-text);">
+                 <option :value="5">5</option>
+         <option :value="10">10</option>
+         <option :value="20">20</option>
       </select>
     </label>
   </div>
