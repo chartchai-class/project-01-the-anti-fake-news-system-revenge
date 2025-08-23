@@ -39,7 +39,7 @@ const router = createRouter({
 })
 
 // 全局路由守卫 - 更新页面标题
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
     if (to.meta.title) {
         document.title = to.meta.title as string
     }

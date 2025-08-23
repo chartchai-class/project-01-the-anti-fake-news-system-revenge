@@ -32,11 +32,6 @@ const showSuccess = ref(false)
 const commentsStore = useCommentsStore()
 
 // 计算属性
-const isValidForm = computed(() => {
-  return formData.value.vote !== '' && 
-         formData.value.comment.trim().length > 0
-})
-
 const canSubmit = computed(() => {
   return formData.value.vote !== '' && !isSubmitting.value
 })

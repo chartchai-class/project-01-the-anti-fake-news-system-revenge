@@ -23,10 +23,6 @@ const paginatedComments = computed(() => {
   return props.comments.slice(start, end)
 })
 
-const handlePageChange = (page: number) => {
-  currentPage.value = page
-}
-
 // Reset to first page when comments change
 watch(() => props.comments.length, () => {
   currentPage.value = 1
