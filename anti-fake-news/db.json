@@ -6,10 +6,10 @@
       "shortDetail": "Short summary of news 1.",
       "fullDetail": "Full detail for news 1. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-21T11:03:24.191Z",
+      "reportedAt": "2025-08-21T11:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/1/640/360",
       "fakeVotes": 22,
-      "nonFakeVotes": 12
+      "nonFakeVotes": 28
     },
     {
       "id": "2",
@@ -17,10 +17,10 @@
       "shortDetail": "Short summary of news 2.",
       "fullDetail": "Full detail for news 2. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-21T06:03:24.191Z",
+      "reportedAt": "2025-08-21T06:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/2/640/360",
-      "fakeVotes": 20,
-      "nonFakeVotes": 16
+      "fakeVotes": 36,
+      "nonFakeVotes": 31
     },
     {
       "id": "3",
@@ -28,10 +28,10 @@
       "shortDetail": "Short summary of news 3.",
       "fullDetail": "Full detail for news 3. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-21T01:03:24.191Z",
+      "reportedAt": "2025-08-21T01:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/3/640/360",
-      "fakeVotes": 28,
-      "nonFakeVotes": 10
+      "fakeVotes": 8,
+      "nonFakeVotes": 28
     },
     {
       "id": "4",
@@ -39,10 +39,10 @@
       "shortDetail": "Short summary of news 4.",
       "fullDetail": "Full detail for news 4. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-20T20:03:24.191Z",
+      "reportedAt": "2025-08-20T20:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/4/640/360",
-      "fakeVotes": 23,
-      "nonFakeVotes": 9
+      "fakeVotes": 40,
+      "nonFakeVotes": 40
     },
     {
       "id": "5",
@@ -50,10 +50,10 @@
       "shortDetail": "Short summary of news 5.",
       "fullDetail": "Full detail for news 5. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-20T15:03:24.191Z",
+      "reportedAt": "2025-08-20T15:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/5/640/360",
-      "fakeVotes": 10,
-      "nonFakeVotes": 40
+      "fakeVotes": 30,
+      "nonFakeVotes": 24
     },
     {
       "id": "6",
@@ -61,10 +61,10 @@
       "shortDetail": "Short summary of news 6.",
       "fullDetail": "Full detail for news 6. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-20T10:03:24.191Z",
+      "reportedAt": "2025-08-20T10:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/6/640/360",
-      "fakeVotes": 18,
-      "nonFakeVotes": 1
+      "fakeVotes": 11,
+      "nonFakeVotes": 40
     },
     {
       "id": "7",
@@ -72,10 +72,10 @@
       "shortDetail": "Short summary of news 7.",
       "fullDetail": "Full detail for news 7. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-20T05:03:24.191Z",
+      "reportedAt": "2025-08-20T05:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/7/640/360",
-      "fakeVotes": 10,
-      "nonFakeVotes": 28
+      "fakeVotes": 23,
+      "nonFakeVotes": 5
     },
     {
       "id": "8",
@@ -83,10 +83,10 @@
       "shortDetail": "Short summary of news 8.",
       "fullDetail": "Full detail for news 8. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-20T00:03:24.191Z",
+      "reportedAt": "2025-08-20T00:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/8/640/360",
-      "fakeVotes": 22,
-      "nonFakeVotes": 18
+      "fakeVotes": 25,
+      "nonFakeVotes": 33
     },
     {
       "id": "9",
@@ -94,10 +94,10 @@
       "shortDetail": "Short summary of news 9.",
       "fullDetail": "Full detail for news 9. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-19T19:03:24.191Z",
+      "reportedAt": "2025-08-19T19:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/9/640/360",
-      "fakeVotes": 20,
-      "nonFakeVotes": 36
+      "fakeVotes": 37,
+      "nonFakeVotes": 1
     },
     {
       "id": "10",
@@ -105,10 +105,10 @@
       "shortDetail": "Short summary of news 10.",
       "fullDetail": "Full detail for news 10. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-19T14:03:24.191Z",
+      "reportedAt": "2025-08-19T14:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/10/640/360",
-      "fakeVotes": 35,
-      "nonFakeVotes": 11
+      "fakeVotes": 22,
+      "nonFakeVotes": 31
     },
     {
       "id": "11",
@@ -116,10 +116,10 @@
       "shortDetail": "Short summary of news 11.",
       "fullDetail": "Full detail for news 11. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-19T09:03:24.191Z",
+      "reportedAt": "2025-08-19T09:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/11/640/360",
-      "fakeVotes": 40,
-      "nonFakeVotes": 40
+      "fakeVotes": 37,
+      "nonFakeVotes": 34
     },
     {
       "id": "12",
@@ -127,10 +127,10 @@
       "shortDetail": "Short summary of news 12.",
       "fullDetail": "Full detail for news 12. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-19T04:03:24.191Z",
+      "reportedAt": "2025-08-19T04:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/12/640/360",
-      "fakeVotes": 26,
-      "nonFakeVotes": 15
+      "fakeVotes": 15,
+      "nonFakeVotes": 9
     },
     {
       "id": "13",
@@ -138,10 +138,10 @@
       "shortDetail": "Short summary of news 13.",
       "fullDetail": "Full detail for news 13. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-18T23:03:24.191Z",
+      "reportedAt": "2025-08-18T23:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/13/640/360",
-      "fakeVotes": 16,
-      "nonFakeVotes": 4
+      "fakeVotes": 15,
+      "nonFakeVotes": 38
     },
     {
       "id": "14",
@@ -149,10 +149,10 @@
       "shortDetail": "Short summary of news 14.",
       "fullDetail": "Full detail for news 14. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-18T18:03:24.191Z",
+      "reportedAt": "2025-08-18T18:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/14/640/360",
-      "fakeVotes": 3,
-      "nonFakeVotes": 37
+      "fakeVotes": 2,
+      "nonFakeVotes": 12
     },
     {
       "id": "15",
@@ -160,10 +160,10 @@
       "shortDetail": "Short summary of news 15.",
       "fullDetail": "Full detail for news 15. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-18T13:03:24.191Z",
+      "reportedAt": "2025-08-18T13:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/15/640/360",
-      "fakeVotes": 37,
-      "nonFakeVotes": 1
+      "fakeVotes": 9,
+      "nonFakeVotes": 0
     },
     {
       "id": "16",
@@ -171,10 +171,10 @@
       "shortDetail": "Short summary of news 16.",
       "fullDetail": "Full detail for news 16. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-18T08:03:24.191Z",
+      "reportedAt": "2025-08-18T08:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/16/640/360",
-      "fakeVotes": 33,
-      "nonFakeVotes": 22
+      "fakeVotes": 19,
+      "nonFakeVotes": 3
     },
     {
       "id": "17",
@@ -182,10 +182,10 @@
       "shortDetail": "Short summary of news 17.",
       "fullDetail": "Full detail for news 17. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-18T03:03:24.191Z",
+      "reportedAt": "2025-08-18T03:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/17/640/360",
-      "fakeVotes": 39,
-      "nonFakeVotes": 25
+      "fakeVotes": 6,
+      "nonFakeVotes": 7
     },
     {
       "id": "18",
@@ -193,10 +193,10 @@
       "shortDetail": "Short summary of news 18.",
       "fullDetail": "Full detail for news 18. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-17T22:03:24.191Z",
+      "reportedAt": "2025-08-17T22:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/18/640/360",
-      "fakeVotes": 20,
-      "nonFakeVotes": 38
+      "fakeVotes": 30,
+      "nonFakeVotes": 32
     },
     {
       "id": "19",
@@ -204,10 +204,10 @@
       "shortDetail": "Short summary of news 19.",
       "fullDetail": "Full detail for news 19. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-17T17:03:24.191Z",
+      "reportedAt": "2025-08-17T17:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/19/640/360",
-      "fakeVotes": 27,
-      "nonFakeVotes": 6
+      "fakeVotes": 37,
+      "nonFakeVotes": 4
     },
     {
       "id": "20",
@@ -215,10 +215,10 @@
       "shortDetail": "Short summary of news 20.",
       "fullDetail": "Full detail for news 20. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-17T12:03:24.191Z",
+      "reportedAt": "2025-08-17T12:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/20/640/360",
-      "fakeVotes": 39,
-      "nonFakeVotes": 24
+      "fakeVotes": 10,
+      "nonFakeVotes": 26
     },
     {
       "id": "21",
@@ -226,10 +226,10 @@
       "shortDetail": "Short summary of news 21.",
       "fullDetail": "Full detail for news 21. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-17T07:03:24.191Z",
+      "reportedAt": "2025-08-17T07:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/21/640/360",
-      "fakeVotes": 25,
-      "nonFakeVotes": 38
+      "fakeVotes": 36,
+      "nonFakeVotes": 6
     },
     {
       "id": "22",
@@ -237,10 +237,10 @@
       "shortDetail": "Short summary of news 22.",
       "fullDetail": "Full detail for news 22. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-17T02:03:24.191Z",
+      "reportedAt": "2025-08-17T02:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/22/640/360",
-      "fakeVotes": 1,
-      "nonFakeVotes": 32
+      "fakeVotes": 38,
+      "nonFakeVotes": 17
     },
     {
       "id": "23",
@@ -248,10 +248,10 @@
       "shortDetail": "Short summary of news 23.",
       "fullDetail": "Full detail for news 23. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-16T21:03:24.191Z",
+      "reportedAt": "2025-08-16T21:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/23/640/360",
-      "fakeVotes": 4,
-      "nonFakeVotes": 5
+      "fakeVotes": 22,
+      "nonFakeVotes": 29
     },
     {
       "id": "24",
@@ -259,10 +259,10 @@
       "shortDetail": "Short summary of news 24.",
       "fullDetail": "Full detail for news 24. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-16T16:03:24.191Z",
+      "reportedAt": "2025-08-16T16:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/24/640/360",
-      "fakeVotes": 8,
-      "nonFakeVotes": 39
+      "fakeVotes": 0,
+      "nonFakeVotes": 6
     },
     {
       "id": "25",
@@ -270,10 +270,10 @@
       "shortDetail": "Short summary of news 25.",
       "fullDetail": "Full detail for news 25. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-16T11:03:24.191Z",
+      "reportedAt": "2025-08-16T11:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/25/640/360",
-      "fakeVotes": 6,
-      "nonFakeVotes": 16
+      "fakeVotes": 18,
+      "nonFakeVotes": 11
     },
     {
       "id": "26",
@@ -281,10 +281,10 @@
       "shortDetail": "Short summary of news 26.",
       "fullDetail": "Full detail for news 26. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-16T06:03:24.191Z",
+      "reportedAt": "2025-08-16T06:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/26/640/360",
-      "fakeVotes": 26,
-      "nonFakeVotes": 38
+      "fakeVotes": 32,
+      "nonFakeVotes": 25
     },
     {
       "id": "27",
@@ -292,10 +292,10 @@
       "shortDetail": "Short summary of news 27.",
       "fullDetail": "Full detail for news 27. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-16T01:03:24.191Z",
+      "reportedAt": "2025-08-16T01:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/27/640/360",
-      "fakeVotes": 15,
-      "nonFakeVotes": 26
+      "fakeVotes": 17,
+      "nonFakeVotes": 27
     },
     {
       "id": "28",
@@ -303,10 +303,10 @@
       "shortDetail": "Short summary of news 28.",
       "fullDetail": "Full detail for news 28. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-15T20:03:24.191Z",
+      "reportedAt": "2025-08-15T20:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/28/640/360",
-      "fakeVotes": 32,
-      "nonFakeVotes": 30
+      "fakeVotes": 14,
+      "nonFakeVotes": 2
     },
     {
       "id": "29",
@@ -314,10 +314,10 @@
       "shortDetail": "Short summary of news 29.",
       "fullDetail": "Full detail for news 29. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-15T15:03:24.191Z",
+      "reportedAt": "2025-08-15T15:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/29/640/360",
-      "fakeVotes": 29,
-      "nonFakeVotes": 13
+      "fakeVotes": 27,
+      "nonFakeVotes": 37
     },
     {
       "id": "30",
@@ -325,10 +325,10 @@
       "shortDetail": "Short summary of news 30.",
       "fullDetail": "Full detail for news 30. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-15T10:03:24.191Z",
+      "reportedAt": "2025-08-15T10:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/30/640/360",
-      "fakeVotes": 37,
-      "nonFakeVotes": 22
+      "fakeVotes": 30,
+      "nonFakeVotes": 29
     },
     {
       "id": "31",
@@ -336,10 +336,10 @@
       "shortDetail": "Short summary of news 31.",
       "fullDetail": "Full detail for news 31. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-15T05:03:24.191Z",
+      "reportedAt": "2025-08-15T05:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/31/640/360",
-      "fakeVotes": 3,
-      "nonFakeVotes": 11
+      "fakeVotes": 38,
+      "nonFakeVotes": 38
     },
     {
       "id": "32",
@@ -347,10 +347,10 @@
       "shortDetail": "Short summary of news 32.",
       "fullDetail": "Full detail for news 32. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-15T00:03:24.191Z",
+      "reportedAt": "2025-08-15T00:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/32/640/360",
-      "fakeVotes": 2,
-      "nonFakeVotes": 39
+      "fakeVotes": 37,
+      "nonFakeVotes": 0
     },
     {
       "id": "33",
@@ -358,10 +358,10 @@
       "shortDetail": "Short summary of news 33.",
       "fullDetail": "Full detail for news 33. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-14T19:03:24.191Z",
+      "reportedAt": "2025-08-14T19:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/33/640/360",
-      "fakeVotes": 22,
-      "nonFakeVotes": 21
+      "fakeVotes": 30,
+      "nonFakeVotes": 22
     },
     {
       "id": "34",
@@ -369,10 +369,10 @@
       "shortDetail": "Short summary of news 34.",
       "fullDetail": "Full detail for news 34. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-14T14:03:24.191Z",
+      "reportedAt": "2025-08-14T14:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/34/640/360",
-      "fakeVotes": 3,
-      "nonFakeVotes": 37
+      "fakeVotes": 12,
+      "nonFakeVotes": 33
     },
     {
       "id": "35",
@@ -380,10 +380,10 @@
       "shortDetail": "Short summary of news 35.",
       "fullDetail": "Full detail for news 35. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-14T09:03:24.191Z",
+      "reportedAt": "2025-08-14T09:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/35/640/360",
-      "fakeVotes": 1,
-      "nonFakeVotes": 13
+      "fakeVotes": 9,
+      "nonFakeVotes": 19
     },
     {
       "id": "36",
@@ -391,10 +391,10 @@
       "shortDetail": "Short summary of news 36.",
       "fullDetail": "Full detail for news 36. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-14T04:03:24.191Z",
+      "reportedAt": "2025-08-14T04:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/36/640/360",
-      "fakeVotes": 28,
-      "nonFakeVotes": 34
+      "fakeVotes": 22,
+      "nonFakeVotes": 28
     },
     {
       "id": "37",
@@ -402,10 +402,10 @@
       "shortDetail": "Short summary of news 37.",
       "fullDetail": "Full detail for news 37. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-13T23:03:24.191Z",
+      "reportedAt": "2025-08-13T23:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/37/640/360",
-      "fakeVotes": 13,
-      "nonFakeVotes": 2
+      "fakeVotes": 31,
+      "nonFakeVotes": 19
     },
     {
       "id": "38",
@@ -413,10 +413,10 @@
       "shortDetail": "Short summary of news 38.",
       "fullDetail": "Full detail for news 38. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-13T18:03:24.191Z",
+      "reportedAt": "2025-08-13T18:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/38/640/360",
-      "fakeVotes": 17,
-      "nonFakeVotes": 7
+      "fakeVotes": 23,
+      "nonFakeVotes": 30
     },
     {
       "id": "39",
@@ -424,10 +424,10 @@
       "shortDetail": "Short summary of news 39.",
       "fullDetail": "Full detail for news 39. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-13T13:03:24.191Z",
+      "reportedAt": "2025-08-13T13:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/39/640/360",
-      "fakeVotes": 5,
-      "nonFakeVotes": 8
+      "fakeVotes": 13,
+      "nonFakeVotes": 1
     },
     {
       "id": "40",
@@ -435,10 +435,10 @@
       "shortDetail": "Short summary of news 40.",
       "fullDetail": "Full detail for news 40. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-13T08:03:24.191Z",
+      "reportedAt": "2025-08-13T08:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/40/640/360",
-      "fakeVotes": 36,
-      "nonFakeVotes": 14
+      "fakeVotes": 19,
+      "nonFakeVotes": 10
     },
     {
       "id": "41",
@@ -446,10 +446,10 @@
       "shortDetail": "Short summary of news 41.",
       "fullDetail": "Full detail for news 41. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-13T03:03:24.191Z",
+      "reportedAt": "2025-08-13T03:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/41/640/360",
-      "fakeVotes": 30,
-      "nonFakeVotes": 5
+      "fakeVotes": 24,
+      "nonFakeVotes": 36
     },
     {
       "id": "42",
@@ -457,10 +457,10 @@
       "shortDetail": "Short summary of news 42.",
       "fullDetail": "Full detail for news 42. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-12T22:03:24.191Z",
+      "reportedAt": "2025-08-12T22:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/42/640/360",
-      "fakeVotes": 24,
-      "nonFakeVotes": 30
+      "fakeVotes": 34,
+      "nonFakeVotes": 39
     },
     {
       "id": "43",
@@ -468,10 +468,10 @@
       "shortDetail": "Short summary of news 43.",
       "fullDetail": "Full detail for news 43. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-12T17:03:24.191Z",
+      "reportedAt": "2025-08-12T17:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/43/640/360",
-      "fakeVotes": 36,
-      "nonFakeVotes": 24
+      "fakeVotes": 14,
+      "nonFakeVotes": 34
     },
     {
       "id": "44",
@@ -479,10 +479,10 @@
       "shortDetail": "Short summary of news 44.",
       "fullDetail": "Full detail for news 44. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-12T12:03:24.191Z",
+      "reportedAt": "2025-08-12T12:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/44/640/360",
-      "fakeVotes": 8,
-      "nonFakeVotes": 31
+      "fakeVotes": 35,
+      "nonFakeVotes": 10
     },
     {
       "id": "45",
@@ -490,10 +490,10 @@
       "shortDetail": "Short summary of news 45.",
       "fullDetail": "Full detail for news 45. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-12T07:03:24.191Z",
+      "reportedAt": "2025-08-12T07:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/45/640/360",
-      "fakeVotes": 37,
-      "nonFakeVotes": 13
+      "fakeVotes": 29,
+      "nonFakeVotes": 3
     },
     {
       "id": "46",
@@ -501,10 +501,10 @@
       "shortDetail": "Short summary of news 46.",
       "fullDetail": "Full detail for news 46. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-12T02:03:24.191Z",
+      "reportedAt": "2025-08-12T02:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/46/640/360",
-      "fakeVotes": 31,
-      "nonFakeVotes": 32
+      "fakeVotes": 26,
+      "nonFakeVotes": 19
     },
     {
       "id": "47",
@@ -512,10 +512,10 @@
       "shortDetail": "Short summary of news 47.",
       "fullDetail": "Full detail for news 47. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-11T21:03:24.191Z",
+      "reportedAt": "2025-08-11T21:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/47/640/360",
-      "fakeVotes": 5,
-      "nonFakeVotes": 9
+      "fakeVotes": 0,
+      "nonFakeVotes": 6
     },
     {
       "id": "48",
@@ -523,10 +523,10 @@
       "shortDetail": "Short summary of news 48.",
       "fullDetail": "Full detail for news 48. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-11T16:03:24.191Z",
+      "reportedAt": "2025-08-11T16:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/48/640/360",
-      "fakeVotes": 7,
-      "nonFakeVotes": 39
+      "fakeVotes": 22,
+      "nonFakeVotes": 8
     },
     {
       "id": "49",
@@ -534,10 +534,10 @@
       "shortDetail": "Short summary of news 49.",
       "fullDetail": "Full detail for news 49. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-11T11:03:24.191Z",
+      "reportedAt": "2025-08-11T11:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/49/640/360",
-      "fakeVotes": 14,
-      "nonFakeVotes": 16
+      "fakeVotes": 25,
+      "nonFakeVotes": 21
     },
     {
       "id": "50",
@@ -545,10 +545,10 @@
       "shortDetail": "Short summary of news 50.",
       "fullDetail": "Full detail for news 50. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-11T06:03:24.191Z",
+      "reportedAt": "2025-08-11T06:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/50/640/360",
-      "fakeVotes": 15,
-      "nonFakeVotes": 27
+      "fakeVotes": 37,
+      "nonFakeVotes": 32
     },
     {
       "id": "51",
@@ -556,10 +556,10 @@
       "shortDetail": "Short summary of news 51.",
       "fullDetail": "Full detail for news 51. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-11T01:03:24.191Z",
+      "reportedAt": "2025-08-11T01:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/51/640/360",
-      "fakeVotes": 28,
-      "nonFakeVotes": 37
+      "fakeVotes": 8,
+      "nonFakeVotes": 39
     },
     {
       "id": "52",
@@ -567,9 +567,9 @@
       "shortDetail": "Short summary of news 52.",
       "fullDetail": "Full detail for news 52. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-10T20:03:24.191Z",
+      "reportedAt": "2025-08-10T20:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/52/640/360",
-      "fakeVotes": 7,
+      "fakeVotes": 5,
       "nonFakeVotes": 0
     },
     {
@@ -578,10 +578,10 @@
       "shortDetail": "Short summary of news 53.",
       "fullDetail": "Full detail for news 53. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-10T15:03:24.191Z",
+      "reportedAt": "2025-08-10T15:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/53/640/360",
-      "fakeVotes": 23,
-      "nonFakeVotes": 24
+      "fakeVotes": 30,
+      "nonFakeVotes": 29
     },
     {
       "id": "54",
@@ -589,10 +589,10 @@
       "shortDetail": "Short summary of news 54.",
       "fullDetail": "Full detail for news 54. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-10T10:03:24.191Z",
+      "reportedAt": "2025-08-10T10:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/54/640/360",
-      "fakeVotes": 26,
-      "nonFakeVotes": 12
+      "fakeVotes": 29,
+      "nonFakeVotes": 16
     },
     {
       "id": "55",
@@ -600,10 +600,10 @@
       "shortDetail": "Short summary of news 55.",
       "fullDetail": "Full detail for news 55. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-10T05:03:24.191Z",
+      "reportedAt": "2025-08-10T05:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/55/640/360",
-      "fakeVotes": 35,
-      "nonFakeVotes": 12
+      "fakeVotes": 2,
+      "nonFakeVotes": 15
     },
     {
       "id": "56",
@@ -611,10 +611,10 @@
       "shortDetail": "Short summary of news 56.",
       "fullDetail": "Full detail for news 56. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-10T00:03:24.191Z",
+      "reportedAt": "2025-08-10T00:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/56/640/360",
-      "fakeVotes": 25,
-      "nonFakeVotes": 18
+      "fakeVotes": 18,
+      "nonFakeVotes": 26
     },
     {
       "id": "57",
@@ -622,10 +622,10 @@
       "shortDetail": "Short summary of news 57.",
       "fullDetail": "Full detail for news 57. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-09T19:03:24.191Z",
+      "reportedAt": "2025-08-09T19:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/57/640/360",
-      "fakeVotes": 11,
-      "nonFakeVotes": 5
+      "fakeVotes": 8,
+      "nonFakeVotes": 28
     },
     {
       "id": "58",
@@ -633,10 +633,10 @@
       "shortDetail": "Short summary of news 58.",
       "fullDetail": "Full detail for news 58. This is long text to simulate real content on the details page.",
       "reporter": "Alex",
-      "reportedAt": "2025-08-09T14:03:24.191Z",
+      "reportedAt": "2025-08-09T14:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/58/640/360",
-      "fakeVotes": 5,
-      "nonFakeVotes": 29
+      "fakeVotes": 32,
+      "nonFakeVotes": 2
     },
     {
       "id": "59",
@@ -644,10 +644,10 @@
       "shortDetail": "Short summary of news 59.",
       "fullDetail": "Full detail for news 59. This is long text to simulate real content on the details page.",
       "reporter": "Bao",
-      "reportedAt": "2025-08-09T09:03:24.191Z",
+      "reportedAt": "2025-08-09T09:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/59/640/360",
-      "fakeVotes": 22,
-      "nonFakeVotes": 25
+      "fakeVotes": 10,
+      "nonFakeVotes": 11
     },
     {
       "id": "60",
@@ -655,863 +655,1010 @@
       "shortDetail": "Short summary of news 60.",
       "fullDetail": "Full detail for news 60. This is long text to simulate real content on the details page.",
       "reporter": "Chai",
-      "reportedAt": "2025-08-09T04:03:24.191Z",
+      "reportedAt": "2025-08-09T04:22:31.004Z",
       "imageUrl": "https://picsum.photos/seed/60/640/360",
-      "fakeVotes": 29,
-      "nonFakeVotes": 31
+      "fakeVotes": 33,
+      "nonFakeVotes": 7
     }
   ],
   "comments": [
     {
       "id": "c-1",
       "newsId": "1",
-      "username": "Liam",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "fake"
+      "username": "Mike",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-2",
       "newsId": "1",
-      "username": "Mike",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "fake"
+      "username": "Liam",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real"
     },
     {
       "id": "c-3",
       "newsId": "2",
-      "username": "Emily",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "username": "Liam",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-4",
       "newsId": "2",
-      "username": "Emma",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real",
+      "username": "Liam",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-5",
       "newsId": "2",
-      "username": "Noah",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real",
+      "username": "David",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-6",
       "newsId": "2",
-      "username": "Emma",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+      "username": "John",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-7",
       "newsId": "3",
-      "username": "Liam",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "fake"
+      "username": "Mike",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-8",
       "newsId": "3",
-      "username": "John",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
+      "username": "Noah",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-9",
       "newsId": "3",
-      "username": "Liam",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "real"
+      "username": "Emily",
+      "comment": "Reporter has a solid track record.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-10",
-      "newsId": "3",
+      "newsId": "5",
       "username": "Mike",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-11",
-      "newsId": "4",
-      "username": "Chris",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-12",
-      "newsId": "4",
-      "username": "Emily",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "6",
+      "username": "Emma",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "real"
     },
     {
+      "id": "c-12",
+      "newsId": "6",
+      "username": "Jane",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake"
+    },
+    {
       "id": "c-13",
-      "newsId": "5",
-      "username": "Sarah",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+      "newsId": "8",
+      "username": "Chris",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-14",
-      "newsId": "5",
-      "username": "Sarah",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
+      "newsId": "8",
+      "username": "Emma",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-15",
-      "newsId": "5",
-      "username": "Mike",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "9",
+      "username": "Chris",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-16",
-      "newsId": "5",
-      "username": "John",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-17",
-      "newsId": "6",
-      "username": "John",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake"
-    },
-    {
-      "id": "c-18",
-      "newsId": "6",
-      "username": "John",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake"
-    },
-    {
-      "id": "c-19",
-      "newsId": "6",
-      "username": "Sarah",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "newsId": "9",
+      "username": "Emma",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-20",
-      "newsId": "7",
-      "username": "Sarah",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "id": "c-17",
+      "newsId": "9",
+      "username": "Mike",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-18",
+      "newsId": "9",
+      "username": "Mike",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-19",
+      "newsId": "10",
+      "username": "Chris",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-20",
+      "newsId": "10",
+      "username": "Mike",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-21",
-      "newsId": "7",
-      "username": "Noah",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+      "newsId": "10",
+      "username": "Emma",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-22",
-      "newsId": "7",
-      "username": "Emily",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "11",
+      "username": "Mike",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-23",
-      "newsId": "8",
-      "username": "Mike",
+      "newsId": "11",
+      "username": "Emma",
       "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
+      "createdAt": "2025-08-21T04:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-24",
-      "newsId": "9",
-      "username": "Chris",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real"
+      "newsId": "11",
+      "username": "David",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-25",
-      "newsId": "10",
-      "username": "Emma",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "newsId": "12",
+      "username": "Mike",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-26",
-      "newsId": "10",
-      "username": "Emma",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "12",
+      "username": "Mike",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-27",
-      "newsId": "11",
-      "username": "David",
+      "newsId": "12",
+      "username": "Emma",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-28",
+      "newsId": "13",
+      "username": "Liam",
       "comment": "This is likely real.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-28",
-      "newsId": "15",
-      "username": "John",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "real"
-    },
-    {
       "id": "c-29",
-      "newsId": "15",
-      "username": "Emma",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
+      "newsId": "14",
+      "username": "Mike",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-30",
-      "newsId": "16",
-      "username": "Liam",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-31",
-      "newsId": "16",
-      "username": "Noah",
+      "newsId": "14",
+      "username": "Emily",
       "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-32",
-      "newsId": "16",
-      "username": "Liam",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "id": "c-31",
+      "newsId": "15",
+      "username": "Emma",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
       "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-32",
+      "newsId": "15",
+      "username": "Jane",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-33",
       "newsId": "16",
-      "username": "John",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-34",
-      "newsId": "17",
-      "username": "David",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "username": "Mike",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-35",
-      "newsId": "17",
-      "username": "Chris",
+      "id": "c-34",
+      "newsId": "16",
+      "username": "Mike",
       "comment": "This is likely real.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "fake"
-    },
-    {
-      "id": "c-36",
-      "newsId": "18",
-      "username": "David",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
-      "vote": "fake"
-    },
-    {
-      "id": "c-37",
-      "newsId": "18",
-      "username": "Emma",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
+      "id": "c-35",
+      "newsId": "16",
+      "username": "Emily",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-36",
+      "newsId": "17",
+      "username": "Sarah",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-37",
+      "newsId": "17",
+      "username": "Emily",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
+    },
+    {
       "id": "c-38",
-      "newsId": "18",
-      "username": "Noah",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real"
+      "newsId": "17",
+      "username": "Sarah",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-39",
-      "newsId": "20",
-      "username": "Sarah",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
+      "newsId": "17",
+      "username": "Jane",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-40",
-      "newsId": "21",
-      "username": "Mike",
+      "newsId": "18",
+      "username": "Jane",
       "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-41",
-      "newsId": "21",
-      "username": "Emma",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-42",
-      "newsId": "21",
-      "username": "Sarah",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-43",
-      "newsId": "21",
-      "username": "Noah",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-44",
-      "newsId": "23",
-      "username": "Sarah",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-45",
-      "newsId": "23",
-      "username": "David",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-46",
-      "newsId": "23",
-      "username": "Emma",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-47",
-      "newsId": "23",
+      "id": "c-41",
+      "newsId": "18",
       "username": "Noah",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-42",
+      "newsId": "18",
+      "username": "Jane",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-48",
-      "newsId": "26",
-      "username": "Chris",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "id": "c-43",
+      "newsId": "18",
+      "username": "Sarah",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-44",
+      "newsId": "19",
+      "username": "Sarah",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real"
+    },
+    {
+      "id": "c-45",
+      "newsId": "19",
+      "username": "Emily",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-46",
+      "newsId": "19",
+      "username": "Noah",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-47",
+      "newsId": "20",
+      "username": "Noah",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-48",
+      "newsId": "20",
+      "username": "Mike",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-49",
-      "newsId": "26",
-      "username": "Emily",
+      "newsId": "20",
+      "username": "John",
       "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "real"
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-50",
-      "newsId": "27",
-      "username": "Mike",
+      "newsId": "21",
+      "username": "David",
       "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-51",
-      "newsId": "27",
-      "username": "Mike",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
-      "vote": "fake"
+      "newsId": "21",
+      "username": "Jane",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-52",
-      "newsId": "28",
-      "username": "David",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
+      "newsId": "21",
+      "username": "John",
+      "comment": "Reporter has a solid track record.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-53",
-      "newsId": "28",
-      "username": "Emma",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "newsId": "21",
+      "username": "Sarah",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-54",
-      "newsId": "31",
-      "username": "Sarah",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real"
+      "newsId": "27",
+      "username": "Emily",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-55",
-      "newsId": "31",
-      "username": "Liam",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "fake"
+      "newsId": "27",
+      "username": "Noah",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-56",
-      "newsId": "32",
-      "username": "Noah",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "newsId": "27",
+      "username": "Liam",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-57",
+      "newsId": "27",
+      "username": "Emily",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-57",
-      "newsId": "32",
-      "username": "David",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "fake"
-    },
-    {
       "id": "c-58",
-      "newsId": "32",
-      "username": "Mike",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "28",
+      "username": "David",
+      "comment": "This is likely fake.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-59",
-      "newsId": "32",
-      "username": "Jane",
+      "newsId": "29",
+      "username": "John",
       "comment": "This is likely real.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-60",
-      "newsId": "33",
-      "username": "David",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "real",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-61",
-      "newsId": "33",
-      "username": "Mike",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "id": "c-60",
+      "newsId": "29",
+      "username": "Noah",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake"
     },
     {
+      "id": "c-61",
+      "newsId": "30",
+      "username": "Sarah",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
       "id": "c-62",
-      "newsId": "33",
-      "username": "Emily",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "newsId": "30",
+      "username": "John",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-63",
-      "newsId": "33",
-      "username": "David",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
+      "newsId": "30",
+      "username": "Jane",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-64",
-      "newsId": "34",
-      "username": "Liam",
-      "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "newsId": "31",
+      "username": "Mike",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-65",
-      "newsId": "35",
-      "username": "Jane",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
+      "newsId": "31",
+      "username": "Noah",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-66",
-      "newsId": "35",
-      "username": "Liam",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+      "newsId": "31",
+      "username": "Chris",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "real"
     },
     {
       "id": "c-67",
-      "newsId": "39",
-      "username": "Emma",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
+      "newsId": "32",
+      "username": "Sarah",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-68",
-      "newsId": "40",
-      "username": "David",
+      "newsId": "32",
+      "username": "Emma",
       "comment": "This is likely real.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-69",
-      "newsId": "40",
-      "username": "Emily",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-70",
-      "newsId": "41",
-      "username": "Emily",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-71",
-      "newsId": "41",
-      "username": "John",
+      "id": "c-69",
+      "newsId": "32",
+      "username": "Chris",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-70",
+      "newsId": "33",
+      "username": "Emma",
       "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "real"
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-71",
+      "newsId": "33",
+      "username": "Liam",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake"
     },
     {
       "id": "c-72",
-      "newsId": "42",
-      "username": "Emily",
-      "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-73",
-      "newsId": "43",
-      "username": "David",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-74",
-      "newsId": "44",
-      "username": "Emma",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
+      "newsId": "33",
+      "username": "Mike",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
       "vote": "real"
     },
     {
-      "id": "c-75",
-      "newsId": "44",
-      "username": "Mike",
+      "id": "c-73",
+      "newsId": "33",
+      "username": "Sarah",
       "comment": "Timeline mismatch with other reports.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-74",
+      "newsId": "34",
+      "username": "Jane",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-76",
-      "newsId": "44",
-      "username": "John",
+      "id": "c-75",
+      "newsId": "34",
+      "username": "Emily",
       "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-76",
+      "newsId": "36",
+      "username": "John",
+      "comment": "This is likely fake.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-77",
-      "newsId": "45",
-      "username": "David",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T08:03:24.191Z",
-      "vote": "real",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+      "newsId": "36",
+      "username": "Mike",
+      "comment": "Reporter has a solid track record.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real"
     },
     {
       "id": "c-78",
-      "newsId": "46",
+      "newsId": "37",
       "username": "Liam",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-79",
-      "newsId": "46",
-      "username": "Noah",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake"
-    },
-    {
-      "id": "c-80",
-      "newsId": "46",
-      "username": "John",
-      "comment": "This is likely real.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "37",
+      "username": "Liam",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
+      "id": "c-80",
+      "newsId": "40",
+      "username": "Chris",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
       "id": "c-81",
-      "newsId": "46",
-      "username": "Sarah",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
-      "vote": "fake"
+      "newsId": "41",
+      "username": "Emma",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-82",
-      "newsId": "47",
-      "username": "David",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "newsId": "42",
+      "username": "Emily",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-83",
-      "newsId": "48",
-      "username": "Mike",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake",
+      "newsId": "42",
+      "username": "Chris",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-84",
-      "newsId": "49",
+      "newsId": "42",
       "username": "Emily",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "fake"
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-85",
-      "newsId": "49",
-      "username": "Liam",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "newsId": "42",
+      "username": "Jane",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-86",
-      "newsId": "50",
+      "newsId": "43",
       "username": "Jane",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "comment": "Reporter has a solid track record.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
       "vote": "fake"
     },
     {
       "id": "c-87",
-      "newsId": "50",
-      "username": "Noah",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T10:03:24.191Z",
-      "vote": "fake"
+      "newsId": "44",
+      "username": "Liam",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real"
     },
     {
       "id": "c-88",
-      "newsId": "50",
-      "username": "Emily",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "real"
+      "newsId": "44",
+      "username": "Emma",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-89",
-      "newsId": "50",
-      "username": "Sarah",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-90",
-      "newsId": "52",
-      "username": "John",
+      "newsId": "44",
+      "username": "Mike",
       "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "fake",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
-    },
-    {
-      "id": "c-91",
-      "newsId": "53",
-      "username": "Noah",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "createdAt": "2025-08-21T10:22:31.005Z",
       "vote": "real"
     },
     {
-      "id": "c-92",
-      "newsId": "53",
-      "username": "Liam",
+      "id": "c-90",
+      "newsId": "44",
+      "username": "David",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-91",
+      "newsId": "47",
+      "username": "Sarah",
       "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T09:03:24.191Z",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "real",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
+      "id": "c-92",
+      "newsId": "47",
+      "username": "Chris",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "real"
+    },
+    {
       "id": "c-93",
-      "newsId": "53",
-      "username": "Mike",
-      "comment": "This is likely fake.",
-      "createdAt": "2025-08-21T04:03:24.191Z",
-      "vote": "real",
+      "newsId": "48",
+      "username": "John",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-94",
-      "newsId": "54",
-      "username": "Sarah",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "real",
+      "newsId": "49",
+      "username": "Noah",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-95",
-      "newsId": "55",
-      "username": "Chris",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
-      "vote": "fake"
+      "newsId": "49",
+      "username": "Emma",
+      "comment": "Reporter has a solid track record.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-96",
-      "newsId": "56",
-      "username": "Mike",
-      "comment": "The data points seem credible.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
-      "vote": "real"
+      "newsId": "49",
+      "username": "John",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
       "id": "c-97",
-      "newsId": "57",
-      "username": "Emily",
+      "newsId": "49",
+      "username": "Emma",
       "comment": "Reporter has a solid track record.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
-      "vote": "real"
-    },
-    {
-      "id": "c-98",
-      "newsId": "59",
-      "username": "Mike",
-      "comment": "Looks real to me based on the sources.",
-      "createdAt": "2025-08-21T06:03:24.191Z",
+      "createdAt": "2025-08-21T05:22:31.005Z",
       "vote": "fake"
     },
     {
+      "id": "c-98",
+      "newsId": "52",
+      "username": "David",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
       "id": "c-99",
-      "newsId": "59",
-      "username": "Sarah",
-      "comment": "I am not convinced by the evidence.",
-      "createdAt": "2025-08-21T05:03:24.191Z",
+      "newsId": "52",
+      "username": "David",
+      "comment": "This is likely fake.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-100",
+      "newsId": "52",
+      "username": "Liam",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
     },
     {
-      "id": "c-100",
-      "newsId": "60",
+      "id": "c-101",
+      "newsId": "52",
+      "username": "Sarah",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-102",
+      "newsId": "53",
       "username": "David",
-      "comment": "Requires further verification.",
-      "createdAt": "2025-08-21T07:03:24.191Z",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-103",
+      "newsId": "53",
+      "username": "John",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "fake"
+    },
+    {
+      "id": "c-104",
+      "newsId": "53",
+      "username": "Chris",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
       "vote": "fake",
       "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-105",
+      "newsId": "53",
+      "username": "Jane",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-106",
+      "newsId": "56",
+      "username": "Emily",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T04:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-107",
+      "newsId": "57",
+      "username": "Chris",
+      "comment": "I am not convinced by the evidence.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-108",
+      "newsId": "57",
+      "username": "Emily",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "fake",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-109",
+      "newsId": "57",
+      "username": "Chris",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-110",
+      "newsId": "57",
+      "username": "Mike",
+      "comment": "The data points seem credible.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-111",
+      "newsId": "58",
+      "username": "Noah",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T08:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-112",
+      "newsId": "59",
+      "username": "David",
+      "comment": "Timeline mismatch with other reports.",
+      "createdAt": "2025-08-21T06:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-113",
+      "newsId": "59",
+      "username": "Noah",
+      "comment": "This is likely fake.",
+      "createdAt": "2025-08-21T05:22:31.005Z",
+      "vote": "real"
+    },
+    {
+      "id": "c-114",
+      "newsId": "60",
+      "username": "Emily",
+      "comment": "This is likely real.",
+      "createdAt": "2025-08-21T07:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-115",
+      "newsId": "60",
+      "username": "Mike",
+      "comment": "Looks real to me based on the sources.",
+      "createdAt": "2025-08-21T10:22:31.005Z",
+      "vote": "real",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop"
+    },
+    {
+      "id": "c-116",
+      "newsId": "60",
+      "username": "Sarah",
+      "comment": "Requires further verification.",
+      "createdAt": "2025-08-21T09:22:31.005Z",
+      "vote": "fake"
     }
   ]
 }
