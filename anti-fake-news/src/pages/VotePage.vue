@@ -4,9 +4,11 @@ import { ref, computed } from 'vue'
 import { newsSeed } from '@/data/news'
 import type { Comment } from '@/types'
 import { useCommentsStore } from '@/stores/comments'
+import { useAuthStore } from '@/stores/auth'
 
 const route = useRoute()
 const router = useRouter()
+const authStore = useAuthStore()
 
 // 获取新闻信息
 const newsId = String(route.params.id)
@@ -90,9 +92,9 @@ const submitVote = async () => {
   // 保存用户评论到 localStorage
   const newComment: Comment = {
     id: Date.now().toString(), // 生成唯一ID
-    username: 'Current User', // 这里应该是实际的用户名
+    username: authStore.displayName, // 使用当前登录用户名
     comment: formData.value.comment,
-    imageUrl: formData.value.imageUrl || undefined,
+    imageUrl: formData.value.imageUrl || authStore.avatarUrl, // 使用用户头像作为默认图片
     createdAt: new Date().toISOString(),
     vote: formData.value.vote === 'Fake' ? 'fake' : 'real'
   }
