@@ -120,7 +120,7 @@ onMounted(() => {
     <div v-if="item" class="card-surface rounded-2xl p-8 shadow-sm">
       <VoteSummary 
         :fake-votes="getUpdatedVoteCount('fake')" 
-        :non-fake-votes="getUpdatedVoteCount('non-fake')" 
+        :true-votes="getUpdatedVoteCount('non-fake')" 
       />
     </div>
 

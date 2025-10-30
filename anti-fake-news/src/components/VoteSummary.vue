@@ -3,18 +3,18 @@ import { computed } from 'vue'
 
 interface Props {
   fakeVotes: number
-  nonFakeVotes: number
+  trueVotes: number
 }
 
 const props = defineProps<Props>()
 
-const totalVotes = computed(() => props.fakeVotes + props.nonFakeVotes)
+const totalVotes = computed(() => props.fakeVotes + props.trueVotes)
 const fakePercentage = computed(() => totalVotes.value > 0 ? Math.round((props.fakeVotes / totalVotes.value) * 100) : 0)
-const realPercentage = computed(() => totalVotes.value > 0 ? Math.round((props.nonFakeVotes / totalVotes.value) * 100) : 0)
+const realPercentage = computed(() => totalVotes.value > 0 ? Math.round((props.trueVotes / totalVotes.value) * 100) : 0)
 
 const status = computed(() => {
   if (totalVotes.value === 0) return 'unknown'
-  return props.fakeVotes >= props.nonFakeVotes ? 'fake' : 'real'
+  return props.fakeVotes >= props.trueVotes ? 'fake' : 'real'
 })
 
 const statusText = computed(() => {
@@ -71,7 +71,7 @@ const statusClass = computed(() => {
         <div>
           <div class="flex justify-between text-xs mb-1">
             <span style="color: var(--color-text-secondary);">Real Votes</span>
-            <span class="font-medium" style="color: var(--color-text);">{{ props.nonFakeVotes }} ({{ realPercentage }}%)</span>
+            <span class="font-medium" style="color: var(--color-text);">{{ props.trueVotes }} ({{ realPercentage }}%)</span>
           </div>
           <div class="h-2 w-full rounded-full overflow-hidden" style="background-color: var(--color-gray-200);">
             <div 
