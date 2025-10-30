@@ -1,5 +1,10 @@
 // src/services/api.ts
-import type { User, RegisterRequest, LoginRequest, AuthResponse, Role } from '@/types'
+import type { 
+    User, RegisterRequest, LoginRequest, AuthResponse, Role,
+    NewsItem, NewsCreateRequest, NewsUpdateRequest, NewsStatus,
+    Comment, CommentCreateRequest,
+    VoteRequest, VoteResponse
+} from '@/types'
 
 // 从环境变量读取后端 API 地址（支持开发和生产环境）
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
@@ -165,5 +170,141 @@ export const roleUtils = {
      */
     isAuthenticated(user: User | null): boolean {
         return user !== null && user.roles.length > 0
+    }
+}
+
+// ==================== 新闻 API ====================
+export const newsService = {
+    /**
+     * 获取新闻列表（支持搜索、分页、过滤）
+     * @param params { page?, size?, keyword?, status? }
+     */
+    async getAll(params?: {
+        page?: number
+        size?: number
+        keyword?: string
+        status?: NewsStatus
+    }): Promise<{ content: NewsItem[], totalElements: number, totalPages: number }> {
+        const searchParams = new URLSearchParams()
+        if (params?.page !== undefined) searchParams.set('page', String(params.page))
+        if (params?.size) searchParams.set('size', String(params.size))
+        if (params?.keyword) searchParams.set('keyword', params.keyword)
+        if (params?.status) searchParams.set('status', params.status)
+        
+        const response = await fetchWithAuth(`${API_BASE_URL}/news?${searchParams}`)
+        if (!response.ok) throw new Error('Failed to get news list')
+        return response.json()
+    },
+
+    /**
+     * 获取新闻详情
+     */
+    async getById(id: number): Promise<NewsItem> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${id}`)
+        if (!response.ok) throw new Error('Failed to get news')
+        return response.json()
+    },
+
+    /**
+     * 创建新闻（MEMBER/ADMIN）
+     */
+    async create(data: NewsCreateRequest): Promise<NewsItem> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news`, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        if (!response.ok) throw new Error('Failed to create news')
+        return response.json()
+    },
+
+    /**
+     * 更新新闻（作者或ADMIN）
+     */
+    async update(id: number, data: NewsUpdateRequest): Promise<NewsItem> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(data)
+        })
+        if (!response.ok) throw new Error('Failed to update news')
+        return response.json()
+    },
+
+    /**
+     * 删除新闻（ADMIN，软删除）
+     */
+    async delete(id: number): Promise<void> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${id}`, {
+            method: 'DELETE'
+        })
+        if (!response.ok) throw new Error('Failed to delete news')
+    },
+
+    /**
+     * 审核新闻（ADMIN）
+     */
+    async updateStatus(id: number, status: NewsStatus): Promise<NewsItem> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${id}/status`, {
+            method: 'PATCH',
+            body: JSON.stringify({ status })
+        })
+        if (!response.ok) throw new Error('Failed to update news status')
+        return response.json()
+    }
+}
+
+// ==================== 评论 API ====================
+export const commentService = {
+    /**
+     * 获取新闻的评论列表
+     */
+    async getByNewsId(newsId: number): Promise<Comment[]> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${newsId}/comments`)
+        if (!response.ok) throw new Error('Failed to get comments')
+        return response.json()
+    },
+
+    /**
+     * 发表评论（登录用户）
+     */
+    async create(newsId: number, data: CommentCreateRequest): Promise<Comment> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${newsId}/comments`, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        if (!response.ok) throw new Error('Failed to create comment')
+        return response.json()
+    },
+
+    /**
+     * 删除评论（作者或ADMIN）
+     */
+    async delete(newsId: number, commentId: number): Promise<void> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${newsId}/comments/${commentId}`, {
+            method: 'DELETE'
+        })
+        if (!response.ok) throw new Error('Failed to delete comment')
+    }
+}
+
+// ==================== 投票 API ====================
+export const voteService = {
+    /**
+     * 投票（登录用户，每用户每新闻仅一票）
+     */
+    async submit(newsId: number, data: VoteRequest): Promise<void> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${newsId}/vote`, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        if (!response.ok) throw new Error('Failed to submit vote')
+    },
+
+    /**
+     * 获取投票统计
+     */
+    async getStats(newsId: number): Promise<VoteResponse> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/news/${newsId}/vote`)
+        if (!response.ok) throw new Error('Failed to get vote stats')
+        return response.json()
     }
 }
