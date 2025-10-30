@@ -39,8 +39,8 @@ const pageSize = ref<number>(10)
 const page = ref<number>(1)
 
 function statusOf(n: NewsItem) {
-  if (n.fakeVotes === 0 && n.nonFakeVotes === 0) return 'unknown'
-  return n.fakeVotes >= n.nonFakeVotes ? 'fake' : 'non-fake'
+  if (n.fakeVotes === 0 && n.trueVotes === 0) return 'unknown'
+  return n.fakeVotes >= n.trueVotes ? 'fake' : 'non-fake'
 }
 
 const filtered = computed(() => {

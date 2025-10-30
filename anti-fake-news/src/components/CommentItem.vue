@@ -11,21 +11,11 @@ const props = withDefaults(defineProps<Props>(), {
   showVoteStats: true
 })
 
-const voteClass = computed(() => {
-  return props.comment.vote === 'fake' ? 'status-fake' : 'status-real'
-})
-
-const voteText = computed(() => {
-  return props.comment.vote === 'fake' ? 'Voted: Fake' : 'Voted: Real'
-})
-
-const voteIcon = computed(() => {
-  return props.comment.vote === 'fake' ? '🚫' : '✅'
-})
-
-const voteColor = computed(() => {
-  return props.comment.vote === 'fake' ? 'var(--color-error)' : 'var(--color-success)'
-})
+// Comment 不再包含 vote 字段，移除投票相关逻辑
+const voteClass = computed(() => 'status-neutral')
+const voteText = computed(() => 'Comment')
+const voteIcon = computed(() => '�')
+const voteColor = computed(() => 'var(--color-text-secondary)')
 
 // 处理图片加载错误
 const handleImageError = (event: Event) => {
@@ -60,10 +50,10 @@ const formatDate = (dateString: string) => {
     <div class="flex items-start justify-between mb-3">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center shadow-sm">
-          <span class="text-white text-sm font-semibold">{{ props.comment.username.charAt(0).toUpperCase() }}</span>
+          <span class="text-white text-sm font-semibold">{{ props.comment.author.name.charAt(0).toUpperCase() }}</span>
         </div>
         <div>
-          <p class="text-sm font-semibold" style="color: var(--color-text);">{{ props.comment.username }}</p>
+          <p class="text-sm font-semibold" style="color: var(--color-text);">{{ props.comment.author.name }}</p>
           <p class="text-xs" style="color: var(--color-text-secondary);">
             {{ formatDate(props.comment.createdAt) }}
           </p>
@@ -87,12 +77,12 @@ const formatDate = (dateString: string) => {
     <!-- 评论内容 -->
     <div class="mb-4">
       <p class="text-sm leading-relaxed" style="color: var(--color-text);">
-        {{ props.comment.comment }}
+        {{ props.comment.content }}
       </p>
     </div>
 
     <!-- 证据图片 -->
-    <div v-if="props.comment.imageUrl" class="mb-4">
+    <div v-if="props.comment.author.imageUrl" class="mb-4">
       <div class="flex items-center gap-2 mb-2">
         <svg class="w-3.5 h-3.5" style="color: var(--color-text-secondary);" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
@@ -101,8 +91,8 @@ const formatDate = (dateString: string) => {
       </div>
       <div class="relative overflow-hidden rounded-lg border" style="border-color: rgba(94, 82, 64, 0.12);">
         <img 
-          :src="props.comment.imageUrl" 
-          :alt="`Evidence provided by ${props.comment.username}`"
+          :src="props.comment.author.imageUrl" 
+          :alt="`Evidence provided by ${props.comment.author.name}`"
           class="w-full h-32 object-cover hover:scale-105 transition-transform duration-200 cursor-pointer"
           @error="handleImageError"
         />
@@ -118,9 +108,9 @@ const formatDate = (dateString: string) => {
     <!-- 投票统计信息 -->
     <div v-if="showVoteStats" class="mb-3 p-3 rounded-lg" style="background-color: var(--color-surface); border: 1px solid rgba(94, 82, 64, 0.08);">
       <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-medium" style="color: var(--color-text-secondary);">Vote Impact:</span>
+        <span class="text-xs font-medium" style="color: var(--color-text-secondary);">Comment Status:</span>
         <span class="text-xs font-semibold" :style="{ color: voteColor }">
-          {{ props.comment.vote === 'fake' ? 'Supports Fake' : 'Supports Real' }}
+          Active
         </span>
       </div>
       
@@ -129,13 +119,12 @@ const formatDate = (dateString: string) => {
         <span class="text-xs" style="color: var(--color-text-secondary);">Confidence:</span>
         <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background-color: var(--color-gray-200);">
           <div 
-            class="h-full rounded-full transition-all duration-500"
-            :class="props.comment.vote === 'fake' ? 'progress-fake' : 'progress-real'"
-            :style="{ width: props.comment.imageUrl ? '85%' : '60%' }"
+            class="h-full rounded-full transition-all duration-500 progress-real"
+            :style="{ width: props.comment.author.imageUrl ? '85%' : '60%' }"
           ></div>
         </div>
         <span class="text-xs font-medium" style="color: var(--color-text);">
-          {{ props.comment.imageUrl ? 'High' : 'Medium' }}
+          {{ props.comment.author.imageUrl ? 'High' : 'Medium' }}
         </span>
       </div>
     </div>
@@ -147,9 +136,9 @@ const formatDate = (dateString: string) => {
           <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          ID: {{ props.comment.id.slice(0, 8) }}
+          ID: {{ props.comment.id }}
         </span>
-        <span v-if="props.comment.imageUrl" class="flex items-center gap-1">
+        <span v-if="props.comment.author.imageUrl" class="flex items-center gap-1">
           <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
           </svg>
@@ -157,11 +146,11 @@ const formatDate = (dateString: string) => {
         </span>
       </div>
       
-      <!-- 投票类型图标 -->
+      <!-- 评论类型图标 -->
       <div class="flex items-center gap-1">
         <span class="text-lg">{{ voteIcon }}</span>
         <span class="font-medium" :style="{ color: voteColor }">
-          {{ props.comment.vote === 'fake' ? 'FAKE' : 'REAL' }}
+          Comment
         </span>
       </div>
     </div>

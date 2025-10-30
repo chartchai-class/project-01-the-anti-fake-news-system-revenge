@@ -6,17 +6,17 @@ import { useRouter } from 'vue-router'
 const props = defineProps<{ item: NewsItem }>()
 
 const status = computed(() => {
-  const { fakeVotes, nonFakeVotes } = props.item
-  if (fakeVotes === 0 && nonFakeVotes === 0) return 'unknown'
-  return fakeVotes >= nonFakeVotes ? 'fake' : 'non-fake'
+  const { fakeVotes, trueVotes } = props.item
+  if (fakeVotes === 0 && trueVotes === 0) return 'unknown'
+  return fakeVotes >= trueVotes ? 'fake' : 'non-fake'
 })
 
 const ratio = computed(() => {
-  const total = props.item.fakeVotes + props.item.nonFakeVotes
+  const total = props.item.fakeVotes + props.item.trueVotes
   if (!total) return { fake: 0, non: 0 }
   return {
     fake: Math.round((props.item.fakeVotes / total) * 100),
-    non: Math.round((props.item.nonFakeVotes / total) * 100),
+    non: Math.round((props.item.trueVotes / total) * 100),
   }
 })
 
@@ -28,7 +28,7 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
      <article class="card-surface rounded-2xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
      <header class="flex items-start justify-between gap-4 mb-4">
        <h3 class="text-lg font-medium leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors duration-200" style="color: var(--color-text);">
-         {{ item.topic }}
+         {{ item.title }}
        </h3>
        <span
            class="shrink-0 px-3 py-1.5 rounded-full text-xs font-medium"
@@ -43,7 +43,7 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
      </header>
 
          <p class="mb-4 text-sm leading-relaxed line-clamp-2" style="color: var(--color-text-secondary);">
-       {{ item.shortDetail }}
+       {{ item.summary }}
      </p>
 
      <div class="mb-4 text-xs space-y-2" style="color: var(--color-text-secondary);">
@@ -52,14 +52,14 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
              <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 8a2 2 0 11-4 0 2 2 0 014 0z"/>
            </svg>
-           {{ item.reporter }}
+           {{ item.author.name }}
          </span>
        </div>
-       <time :datetime="item.reportedAt" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background-color: var(--color-surface); border: 1px solid rgba(94, 82, 64, 0.12);">
+       <time :datetime="item.createdAt" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background-color: var(--color-surface); border: 1px solid rgba(94, 82, 64, 0.12);">
          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
          </svg>
-         {{ new Date(item.reportedAt).toLocaleString() }}
+         {{ new Date(item.createdAt).toLocaleString() }}
        </time>
      </div>
 

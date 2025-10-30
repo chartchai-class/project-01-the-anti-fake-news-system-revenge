@@ -11,7 +11,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 // 获取新闻信息
-const newsId = String(route.params.id)
+const newsId = Number(route.params.id)  // 改为 number
 const newsItem = newsSeed.find(n => n.id === newsId)
 
 // 表单数据
@@ -85,18 +85,25 @@ const submitVote = async () => {
     if (formData.value.vote === 'Fake') {
       newsItem.fakeVotes++
     } else {
-      newsItem.nonFakeVotes++
+      newsItem.trueVotes++
     }
   }
 
   // 保存用户评论到 localStorage
   const newComment: Comment = {
-    id: Date.now().toString(), // 生成唯一ID
-    username: authStore.displayName, // 使用当前登录用户名
-    comment: formData.value.comment,
-    imageUrl: formData.value.imageUrl || authStore.avatarUrl, // 使用用户头像作为默认图片
-    createdAt: new Date().toISOString(),
-    vote: formData.value.vote === 'Fake' ? 'fake' : 'real'
+    id: Date.now(),  // 改为 number
+    content: formData.value.comment,  // 改为 content
+    author: {  // 改为 author 对象
+      id: authStore.user?.id || 0,
+      name: authStore.displayName,
+      imageUrl: formData.value.imageUrl || authStore.avatarUrl
+    },
+    news: {  // 添加 news 对象
+      id: newsId,
+      title: newsItem?.title || 'Unknown'
+    },
+    isDeleted: false,
+    createdAt: new Date().toISOString()
   }
 
   // 使用 Pinia 评论 store 持久化
@@ -105,7 +112,7 @@ const submitVote = async () => {
   // 更新新闻投票数据到 localStorage
   const newsData = JSON.parse(localStorage.getItem(`news_${newsId}`) || '{}')
   newsData.fakeVotes = newsItem?.fakeVotes || 0
-  newsData.nonFakeVotes = newsItem?.nonFakeVotes || 0
+  newsData.trueVotes = newsItem?.trueVotes || 0
   localStorage.setItem(`news_${newsId}`, JSON.stringify(newsData))
 
   isSubmitting.value = false
@@ -174,7 +181,7 @@ const resetForm = () => {
           News #{{ newsId }}
         </p>
         <p class="text-sm" style="color: var(--color-text-secondary);">
-          {{ newsItem.topic }}
+          {{ newsItem.title }}
         </p>
       </div>
 

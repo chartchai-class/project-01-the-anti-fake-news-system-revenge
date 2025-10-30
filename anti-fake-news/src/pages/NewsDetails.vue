@@ -8,13 +8,13 @@ import { useCommentsStore } from '@/stores/comments'
 
 const route = useRoute()
 const router = useRouter()
-const id = String(route.params.id)
+const id = Number(route.params.id)
 const item = ref(newsSeed.find(n => n.id === id))
 
 import { ref, onMounted, watch } from 'vue'
-async function fetchNewsById(newsId: string) {
+async function fetchNewsById(newsId: number) {
   try {
-    const res = await fetch(`http://localhost:4000/news/${encodeURIComponent(newsId)}`)
+    const res = await fetch(`http://localhost:4000/news/${newsId}`)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = await res.json()
     item.value = data ?? item.value
@@ -37,7 +37,7 @@ const loadComments = async () => {
 // 监听路由变化，重新加载评论
 watch(() => route.params.id, () => {
   if (route.params.id) {
-    fetchNewsById(String(route.params.id))
+    fetchNewsById(Number(route.params.id))
     loadComments()
   }
 })
@@ -48,11 +48,11 @@ const getUpdatedVoteCount = (type: 'fake' | 'non-fake') => {
     const storedNewsData = localStorage.getItem(`news_${id}`)
     if (storedNewsData) {
       const newsData = JSON.parse(storedNewsData)
-      return type === 'fake' ? newsData.fakeVotes : newsData.nonFakeVotes
+      return type === 'fake' ? newsData.fakeVotes : newsData.trueVotes
     }
   }
   // 如果没有存储的数据，返回原始数据
-  return type === 'fake' ? (item.value?.fakeVotes || 0) : (item.value?.nonFakeVotes || 0)
+  return type === 'fake' ? (item.value?.fakeVotes || 0) : (item.value?.trueVotes || 0)
 }
 
 // 组件挂载时加载评论
@@ -76,7 +76,7 @@ onMounted(() => {
 
     <div v-if="item" class="space-y-8">
       <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text);">{{ item.topic }}</h1>
+        <h1 class="text-4xl font-bold mb-4" style="color: var(--color-text);">{{ item.title }}</h1>
       </div>
 
       <div class="relative overflow-hidden rounded-2xl shadow-lg">
@@ -85,7 +85,7 @@ onMounted(() => {
 
       <div class="card-surface rounded-2xl p-8 shadow-sm">
         <p class="text-lg leading-relaxed mb-6" style="color: var(--color-text);">
-          {{ item.fullDetail }}
+          {{ item.content }}
         </p>
         
         <div class="flex flex-wrap items-center gap-4 text-sm border-t pt-6" style="border-color: rgba(94, 82, 64, 0.12); color: var(--color-text-secondary);">
@@ -93,13 +93,13 @@ onMounted(() => {
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 8a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
-            Reporter: {{ item.reporter }}
+            Reporter: {{ item.author.name }}
           </span>
-          <time :datetime="item.reportedAt" class="inline-flex items-center gap-2 px-3 py-2 rounded-full card-surface border" style="border-color: rgba(94, 82, 64, 0.12);">
+          <time :datetime="item.createdAt" class="inline-flex items-center gap-2 px-3 py-2 rounded-full card-surface border" style="border-color: rgba(94, 82, 64, 0.12);">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
             </svg>
-            {{ new Date(item.reportedAt).toLocaleString() }}
+            {{ new Date(item.createdAt).toLocaleString() }}
           </time>
         </div>
       </div>
