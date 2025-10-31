@@ -9,7 +9,8 @@ function getStorageKey(newsId: string | number): string {
 	return `comments_${newsId}`
 }
 
-const API_BASE = 'http://localhost:4000'
+// 使用环境变量或默认后端地址
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
 
 export const useCommentsStore = defineStore('comments', {
 	state: (): CommentsState => ({
