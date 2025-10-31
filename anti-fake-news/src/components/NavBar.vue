@@ -13,7 +13,7 @@ const avatarUrl = computed(() => authStore.avatarUrl)
 const isAdmin = computed(() => authStore.isAdmin)
 
 const handleLogout = () => {
-    if (confirm('确定要退出登录吗？')) {
+    if (confirm('Are you sure you want to log out?')) {
         authStore.logout()
         router.push('/login')
     }
@@ -45,15 +45,15 @@ const goToHome = () => {
                     <div class="flex items-center">
                         <span class="text-2xl mr-2">🛡️</span>
                         <div>
-                            <h1 class="text-xl font-bold text-gray-900">反假新闻系统</h1>
-                            <p class="text-xs text-gray-500">Anti-Fake News System</p>
+                            <h1 class="text-xl font-bold text-gray-900">Anti-Fake News System</h1>
+                            <p class="text-xs text-gray-500">Combating Misinformation</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- User Menu -->
                 <div class="flex items-center gap-4">
-                    <!-- 已登录状态 -->
+                    <!-- Logged in state -->
                     <template v-if="isAuthenticated && currentUser">
                         <!-- Admin Button -->
                         <button
@@ -61,7 +61,7 @@ const goToHome = () => {
                             @click="goToAdminUsers"
                             class="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg transition font-medium text-sm"
                         >
-                            👥 用户管理
+                            👥 User Management
                         </button>
 
                         <!-- User Info -->
@@ -95,23 +95,23 @@ const goToHome = () => {
                             @click="handleLogout"
                             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition font-medium text-sm"
                         >
-                            退出登录
+                            Logout
                         </button>
                     </template>
 
-                    <!-- 未登录状态 -->
+                    <!-- Not logged in state -->
                     <template v-else>
                         <button
                             @click="goToLogin"
                             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition font-medium text-sm"
                         >
-                            登录
+                            Login
                         </button>
                         <button
                             @click="goToRegister"
                             class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition font-medium text-sm"
                         >
-                            注册
+                            Register
                         </button>
                     </template>
                 </div>

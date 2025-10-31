@@ -6,60 +6,61 @@ import type { Comment } from '@/types'
 import { useCommentsStore } from '@/stores/comments'
 import { useAuthStore } from '@/stores/auth'
 import { voteService } from '@/services/api'
+import ImageUploader from '@/components/ImageUploader.vue'
 import * as yup from 'yup'
 
 const route = useRoute()
 const router = useRouter()
 const authStore = useAuthStore()
 
-// 获取新闻信息
-const newsId = Number(route.params.id)  // 改为 number
+// Get news information
+const newsId = Number(route.params.id)  // Convert to number
 const newsItem = newsSeed.find(n => n.id === newsId)
 
-// 表单数据
+// Form data
 const formData = ref({
   vote: '',
   comment: '',
   imageUrl: ''
 })
 
-// 表单验证状态
+// Form validation state
 const fieldErrors = ref<{ vote?: string, comment?: string, imageUrl?: string }>({})
 
-// 投票状态
+// Vote state
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
 const commentsStore = useCommentsStore()
 
-// Yup 验证规则
+// Yup validation rules
 const voteSchema = yup.object({
   vote: yup
     .string()
-    .required('请选择您的投票')
-    .oneOf(['FAKE', 'NOT_FAKE'], '请选择有效的投票选项'),
+    .required('Please select your vote')
+    .oneOf(['FAKE', 'NOT_FAKE'], 'Please select a valid vote option'),
   comment: yup
     .string()
-    .required('评论不能为空')
-    .min(10, '评论至少需要 10 个字符')
-    .max(500, '评论不能超过 500 个字符'),
+    .required('Comment cannot be empty')
+    .min(10, 'Comment must be at least 10 characters')
+    .max(500, 'Comment cannot exceed 500 characters'),
   imageUrl: yup
     .string()
-    .url('请输入有效的图片 URL')
+    .url('Please enter a valid image URL')
     .nullable()
 })
 
-// 计算属性
+// Computed property
 const canSubmit = computed(() => {
   return formData.value.vote !== '' && formData.value.comment.trim().length > 0 && !isSubmitting.value
 })
 
-// 提交投票
+// Submit vote
 const submitVote = async () => {
-  // 重置错误信息
+  // Reset error messages
   fieldErrors.value = {}
 
   try {
-    // Yup 验证
+    // Yup validation
     await voteSchema.validate(
       {
         vote: formData.value.vote,
@@ -70,7 +71,7 @@ const submitVote = async () => {
     )
   } catch (err) {
     if (err instanceof yup.ValidationError) {
-      // 收集所有字段错误
+      // Collect all field errors
       err.inner.forEach(error => {
         if (error.path) {
           fieldErrors.value[error.path as keyof typeof fieldErrors.value] = error.message
@@ -83,10 +84,10 @@ const submitVote = async () => {
   isSubmitting.value = true
   
   try {
-    // 1. 提交投票到后端 API
+    // 1. Submit vote to backend API
     await voteService.submit(newsId, { value: formData.value.vote as 'FAKE' | 'NOT_FAKE' })
     
-    // 2. 提交评论到后端 API
+    // 2. Submit comment to backend API
     const newComment: Comment = {
       id: Date.now(),
       newsId: newsId,
@@ -103,23 +104,23 @@ const submitVote = async () => {
     isSubmitting.value = false
     showSuccess.value = true
 
-    // 3秒后自动返回新闻详情页
+    // Automatically return to news details page after 3 seconds
     setTimeout(() => {
       router.push(`/news/${newsId}`)
     }, 3000)
   } catch (error) {
     console.error('Failed to submit vote or comment:', error)
     isSubmitting.value = false
-    alert('提交失败，请重试')
+    alert('Submission failed, please try again')
   }
 }
 
-// 返回新闻详情页
+// Return to news details page
 const goBackToNews = () => {
   router.push(`/news/${newsId}`)
 }
 
-// 重置表单
+// Reset form
 const resetForm = () => {
   formData.value = { vote: '', comment: '', imageUrl: '' }
   fieldErrors.value = {}
@@ -238,18 +239,13 @@ const resetForm = () => {
           <p v-if="fieldErrors.comment" class="text-sm text-red-500">{{ fieldErrors.comment }}</p>
         </div>
 
-        <!-- 图片链接 -->
-        <div class="space-y-3">
-          <label class="block text-sm font-medium" style="color: var(--color-text);">Image URL (Optional)</label>
-          <input 
-            v-model="formData.imageUrl"
-            type="url" 
-            class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all duration-200" 
-            :class="{ 'border-red-500': fieldErrors.imageUrl }"
-            style="border-color: rgba(94, 82, 64, 0.12); background-color: var(--color-surface); color: var(--color-text); --tw-ring-color: var(--color-primary);"
-            placeholder="https://example.com/image.jpg">
-          <p v-if="fieldErrors.imageUrl" class="text-sm text-red-500">{{ fieldErrors.imageUrl }}</p>
-        </div>
+        <!-- Image upload -->
+        <ImageUploader 
+          v-model="formData.imageUrl"
+          label="Image Evidence (Optional)"
+          placeholder="Enter image URL or click upload button"
+          :error="fieldErrors.imageUrl"
+        />
 
         <!-- 操作按钮 -->
         <div class="flex gap-4">

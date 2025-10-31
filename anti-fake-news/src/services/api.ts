@@ -351,3 +351,39 @@ export const voteService = {
         if (!response.ok) throw new Error('Failed to delete vote')
     }
 }
+
+// ==================== 文件上传 API ====================
+export const uploadService = {
+    /**
+     * 上传图片文件
+     * 后端端点：POST /uploads
+     * @param file 图片文件对象
+     * @returns 上传成功后返回图片 URL
+     */
+    async uploadImage(file: File): Promise<string> {
+        const token = localStorage.getItem('token')
+        const formData = new FormData()
+        formData.append('file', file)
+
+        const response = await fetch(`${API_BASE_URL}/uploads`, {
+            method: 'POST',
+            headers: {
+                ...(token && { Authorization: `Bearer ${token}` })
+                // 注意：不设置 Content-Type，让浏览器自动设置 multipart/form-data 和 boundary
+            },
+            body: formData
+        })
+
+        if (!response.ok) {
+            const error = await response.json()
+            throw new Error(error.message || '上传失败')
+        }
+
+        const result = await response.json()
+        const url = result.data?.url || result.url
+        
+        // 返回完整的 URL 路径
+        return url.startsWith('http') ? url : `${API_BASE_URL}${url}`
+    }
+}
+

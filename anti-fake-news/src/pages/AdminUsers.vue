@@ -12,10 +12,10 @@ const users = ref<User[]>([])
 const isLoading = ref(false)
 const errorMessage = ref('')
 
-// 检查权限
+// Check permissions
 onMounted(async () => {
     if (!authStore.isAdmin) {
-        alert('您没有权限访问此页面')
+        alert('You do not have permission to access this page')
         router.push('/')
         return
     }
@@ -29,23 +29,23 @@ const loadUsers = async () => {
     try {
         users.value = await adminService.getAllUsers()
     } catch (error) {
-        errorMessage.value = error instanceof Error ? error.message : '加载用户列表失败'
+        errorMessage.value = error instanceof Error ? error.message : 'Failed to load user list'
     } finally {
         isLoading.value = false
     }
 }
 
 const updateRole = async (userId: number, newRole: Role) => {
-    if (!confirm(`确定要将此用户角色改为 ${newRole} 吗？`)) {
+    if (!confirm(`Are you sure you want to change this user's role to ${newRole}?`)) {
         return
     }
 
     try {
         await adminService.updateUserRole(userId, newRole)
-        await loadUsers() // 刷新列表
-        alert('角色更新成功')
+        await loadUsers() // Refresh list
+        alert('Role updated successfully')
     } catch (error) {
-        alert(error instanceof Error ? error.message : '更新角色失败')
+        alert(error instanceof Error ? error.message : 'Failed to update role')
     }
 }
 
@@ -74,14 +74,14 @@ const goBack = () => {
             <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-900">用户管理</h1>
-                        <p class="text-gray-600 mt-1">管理所有用户的角色和权限</p>
+                        <h1 class="text-2xl font-bold text-gray-900">User Management</h1>
+                        <p class="text-gray-600 mt-1">Manage all user roles and permissions</p>
                     </div>
                     <button
                         @click="goBack"
                         class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition"
                     >
-                        返回首页
+                        Back to Home
                     </button>
                 </div>
             </div>
@@ -94,7 +94,7 @@ const goBack = () => {
             <!-- Loading State -->
             <div v-if="isLoading" class="text-center py-12">
                 <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                <p class="mt-4 text-gray-600">加载中...</p>
+                <p class="mt-4 text-gray-600">Loading...</p>
             </div>
 
             <!-- Users Table -->
@@ -104,10 +104,10 @@ const goBack = () => {
                         <thead class="bg-gray-50 border-b border-gray-200">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">ID</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">用户</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">邮箱</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">角色</th>
-                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">操作</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">User</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Role</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -158,21 +158,21 @@ const goBack = () => {
                                             @click="updateRole(user.id, 'READER')"
                                             class="px-3 py-1 text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition"
                                         >
-                                            设为 READER
+                                            Set to READER
                                         </button>
                                         <button
                                             v-if="!user.roles.includes('MEMBER')"
                                             @click="updateRole(user.id, 'MEMBER')"
                                             class="px-3 py-1 text-xs bg-blue-100 hover:bg-blue-200 text-blue-700 rounded transition"
                                         >
-                                            设为 MEMBER
+                                            Set to MEMBER
                                         </button>
                                         <button
                                             v-if="!user.roles.includes('ADMIN')"
                                             @click="updateRole(user.id, 'ADMIN')"
                                             class="px-3 py-1 text-xs bg-red-100 hover:bg-red-200 text-red-700 rounded transition"
                                         >
-                                            设为 ADMIN
+                                            Set to ADMIN
                                         </button>
                                     </div>
                                 </td>
@@ -183,25 +183,25 @@ const goBack = () => {
 
                 <!-- Empty State -->
                 <div v-if="users.length === 0 && !isLoading" class="text-center py-12">
-                    <p class="text-gray-500">暂无用户数据</p>
+                    <p class="text-gray-500">No user data available</p>
                 </div>
             </div>
 
             <!-- Role Descriptions -->
             <div class="mt-6 bg-white rounded-lg shadow-sm p-6">
-                <h2 class="text-lg font-semibold text-gray-900 mb-4">角色说明</h2>
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Role Descriptions</h2>
                 <div class="space-y-3">
                     <div class="flex items-start">
                         <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold mr-3">READER</span>
-                        <p class="text-sm text-gray-600">只读用户，可以浏览新闻和投票，但不能发布内容</p>
+                        <p class="text-sm text-gray-600">Read-only user, can browse news and vote, but cannot publish content</p>
                     </div>
                     <div class="flex items-start">
                         <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold mr-3">MEMBER</span>
-                        <p class="text-sm text-gray-600">会员用户，可以发布新闻、评论和投票</p>
+                        <p class="text-sm text-gray-600">Member user, can publish news, comments and vote</p>
                     </div>
                     <div class="flex items-start">
                         <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold mr-3">ADMIN</span>
-                        <p class="text-sm text-gray-600">管理员，拥有所有权限，包括管理用户角色</p>
+                        <p class="text-sm text-gray-600">Administrator, has all permissions, including managing user roles</p>
                     </div>
                 </div>
             </div>

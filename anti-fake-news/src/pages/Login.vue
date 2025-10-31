@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
-import '@/config/firebase' // 引入 Firebase SDK
+import '@/config/firebase' // Import Firebase SDK
 import * as yup from 'yup'
 
 const router = useRouter()
@@ -14,30 +14,30 @@ const errorMessage = ref('')
 const fieldErrors = ref<{ email?: string, password?: string }>({})
 const isLoading = ref(false)
 
-// Yup 验证规则
+// Yup validation rules
 const loginSchema = yup.object({
     email: yup
         .string()
-        .required('邮箱不能为空')
-        .email('请输入有效的邮箱地址'),
+        .required('Email cannot be empty')
+        .email('Please enter a valid email address'),
     password: yup
         .string()
-        .required('密码不能为空')
-        .min(6, '密码长度至少为 6 个字符')
+        .required('Password cannot be empty')
+        .min(6, 'Password must be at least 6 characters')
 })
 
-// 初始化 Firebase (通过导入已自动初始化)
+// Initialize Firebase (automatically initialized by import)
 onMounted(() => {
     console.log('Firebase SDK initialized')
 })
 
 const handleLogin = async () => {
-    // 重置错误信息
+    // Reset error messages
     errorMessage.value = ''
     fieldErrors.value = {}
 
     try {
-        // Yup 验证
+        // Yup validation
         await loginSchema.validate(
             { 
                 email: email.value, 
@@ -47,7 +47,7 @@ const handleLogin = async () => {
         )
     } catch (err) {
         if (err instanceof yup.ValidationError) {
-            // 收集所有字段错误
+            // Collect all field errors
             err.inner.forEach(error => {
                 if (error.path) {
                     fieldErrors.value[error.path as 'email' | 'password'] = error.message
@@ -60,17 +60,17 @@ const handleLogin = async () => {
     isLoading.value = true
 
     try {
-        // 调用后端登录接口 - 字段完全匹配后端 LoginRequest
+        // Call backend login API - fields fully match backend LoginRequest
         await authStore.login({
             email: email.value,
             password: password.value
         })
 
-        // 登录成功，跳转到首页
+        // Login successful, redirect to home
         router.push('/')
     } catch (error) {
-        // 显示后端返回的错误信息
-        errorMessage.value = error instanceof Error ? error.message : '登录失败，请检查邮箱和密码'
+        // Display error message from backend
+        errorMessage.value = error instanceof Error ? error.message : 'Login failed, please check your email and password'
     } finally {
         isLoading.value = false
     }
@@ -86,8 +86,8 @@ const goToRegister = () => {
         <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
             <!-- Logo/Title -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">欢迎回来</h1>
-                <p class="text-gray-600">登录到反假新闻系统</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+                <p class="text-gray-600">Login to Anti-Fake News System</p>
             </div>
 
             <!-- Error Message -->
@@ -99,7 +99,7 @@ const goToRegister = () => {
             <form @submit.prevent="handleLogin" class="space-y-6">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                        邮箱
+                        Email
                     </label>
                     <input
                         id="email"
@@ -116,7 +116,7 @@ const goToRegister = () => {
 
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                        密码
+                        Password
                     </label>
                     <input
                         id="password"
@@ -136,28 +136,28 @@ const goToRegister = () => {
                     :disabled="isLoading"
                     class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {{ isLoading ? '登录中...' : '登录' }}
+                    {{ isLoading ? 'Logging in...' : 'Login' }}
                 </button>
             </form>
 
             <!-- Divider -->
             <div class="mt-6 text-center">
                 <p class="text-sm text-gray-600">
-                    还没有账号？
+                    Don't have an account?
                     <button
                         @click="goToRegister"
                         class="text-blue-600 hover:text-blue-700 font-semibold"
                     >
-                        立即注册
+                        Register now
                     </button>
                 </p>
             </div>
 
             <!-- Test Account Info -->
             <div class="mt-6 p-4 bg-gray-50 rounded-lg">
-                <p class="text-xs text-gray-600 mb-2 font-semibold">测试账号：</p>
+                <p class="text-xs text-gray-600 mb-2 font-semibold">Test Account:</p>
                 <div class="space-y-1 text-xs text-gray-500">
-                    <p>管理员: admin@local / admin123</p>
+                    <p>Admin: admin@local / admin123</p>
                 </div>
             </div>
         </div>
