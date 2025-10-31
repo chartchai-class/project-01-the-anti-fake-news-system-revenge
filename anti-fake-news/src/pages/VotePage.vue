@@ -5,6 +5,7 @@ import { newsSeed } from '@/data/news'
 import type { Comment } from '@/types'
 import { useCommentsStore } from '@/stores/comments'
 import { useAuthStore } from '@/stores/auth'
+import { voteService } from '@/services/api'
 import * as yup from 'yup'
 
 const route = useRoute()
@@ -35,7 +36,7 @@ const voteSchema = yup.object({
   vote: yup
     .string()
     .required('请选择您的投票')
-    .oneOf(['Fake', 'Not Fake'], '请选择有效的投票选项'),
+    .oneOf(['FAKE', 'NOT_FAKE'], '请选择有效的投票选项'),
   comment: yup
     .string()
     .required('评论不能为空')
@@ -81,37 +82,36 @@ const submitVote = async () => {
 
   isSubmitting.value = true
   
-  // ⚠️ TODO: 重构为使用后端 API
-  // 参考: VOTEPAGE_REFACTOR_TODO.md
-  
-  // 模拟 API 调用
-  await new Promise(resolve => setTimeout(resolve, 1000))
-  
-  // ⚠️ 临时禁用：等待后端 API 对接
-  // 正确做法：await voteService.submit(newsId, { value: formData.value.vote === 'Fake' ? 'FAKE' : 'NOT_FAKE' })
-  
-  // 保存用户评论到 localStorage (临时方案)
-  const newComment: Comment = {
-    id: Date.now(),
-    newsId: newsId,
-    authorId: authStore.user?.id || 0,
-    authorName: authStore.displayName,
-    content: formData.value.comment,
-    imageUrl: formData.value.imageUrl || authStore.avatarUrl,
-    createdAt: new Date().toISOString(),
-    deleted: false
+  try {
+    // 1. 提交投票到后端 API
+    await voteService.submit(newsId, { value: formData.value.vote as 'FAKE' | 'NOT_FAKE' })
+    
+    // 2. 提交评论到后端 API
+    const newComment: Comment = {
+      id: Date.now(),
+      newsId: newsId,
+      authorId: authStore.user?.id || 0,
+      authorName: authStore.displayName,
+      content: formData.value.comment,
+      imageUrl: formData.value.imageUrl || authStore.avatarUrl,
+      createdAt: new Date().toISOString(),
+      deleted: false
+    }
+    
+    await commentsStore.add(newsId, newComment)
+    
+    isSubmitting.value = false
+    showSuccess.value = true
+
+    // 3秒后自动返回新闻详情页
+    setTimeout(() => {
+      router.push(`/news/${newsId}`)
+    }, 3000)
+  } catch (error) {
+    console.error('Failed to submit vote or comment:', error)
+    isSubmitting.value = false
+    alert('提交失败，请重试')
   }
-
-  // 使用 Pinia 评论 store 持久化
-  commentsStore.add(newsId, newComment)
-
-  isSubmitting.value = false
-  showSuccess.value = true
-
-  // 3秒后自动返回新闻详情页
-  setTimeout(() => {
-    router.push(`/news/${newsId}`)
-  }, 3000)
 }
 
 // 返回新闻详情页
@@ -183,18 +183,18 @@ const resetForm = () => {
           </label>
           <div class="grid grid-cols-2 gap-3">
             <label class="flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 hover:border-teal-300" 
-                   :class="{ 'border-teal-500': formData.vote === 'Real' }"
+                   :class="{ 'border-teal-500': formData.vote === 'NOT_FAKE' }"
                    style="border-color: rgba(94, 82, 64, 0.12);">
               <input 
                 type="radio" 
                 name="vote" 
-                value="Real" 
+                value="NOT_FAKE" 
                 v-model="formData.vote"
                 class="sr-only">
               <div class="w-4 h-4 rounded-full border-2 mr-3 flex items-center justify-center" 
-                   :class="{ 'border-teal-500': formData.vote === 'Real' }"
+                   :class="{ 'border-teal-500': formData.vote === 'NOT_FAKE' }"
                    style="border-color: var(--color-primary);">
-                <div v-if="formData.vote === 'Real'" 
+                <div v-if="formData.vote === 'NOT_FAKE'" 
                      class="w-2 h-2 rounded-full" 
                      style="background-color: var(--color-primary);"></div>
               </div>
@@ -202,18 +202,18 @@ const resetForm = () => {
             </label>
             
             <label class="flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 hover:border-red-300"
-                   :class="{ 'border-red-500': formData.vote === 'Fake' }"
+                   :class="{ 'border-red-500': formData.vote === 'FAKE' }"
                    style="border-color: rgba(94, 82, 64, 0.12);">
               <input 
                 type="radio" 
                 name="vote" 
-                value="Fake" 
+                value="FAKE" 
                 v-model="formData.vote"
                 class="sr-only">
               <div class="w-4 h-4 rounded-full border-2 mr-3 flex items-center justify-center"
-                   :class="{ 'border-red-500': formData.vote === 'Fake' }"
+                   :class="{ 'border-red-500': formData.vote === 'FAKE' }"
                    style="border-color: var(--color-error);">
-                <div v-if="formData.vote === 'Fake'" 
+                <div v-if="formData.vote === 'FAKE'" 
                      class="w-2 h-2 rounded-full" 
                      style="background-color: var(--color-error);"></div>
               </div>

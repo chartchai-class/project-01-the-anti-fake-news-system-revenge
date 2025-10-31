@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token 过期时间测试工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-right: 10px;
+        }
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #868f96 0%, #596164 100%);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        pre {
+            background: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .token-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .info-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        .info-card h3 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .info-card p {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+        }
+        .timer {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            color: #667eea;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .timer.warning {
+            color: #f5576c;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .log-entry {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+        }
+        .log-success { background: #d4edda; color: #155724; }
+        .log-error { background: #f8d7da; color: #721c24; }
+        .log-info { background: #d1ecf1; color: #0c5460; }
+        #testLog {
+            max-height: 400px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 JWT Token 过期时间测试工具</h1>
+        <p class="subtitle">测试 Token 的有效期和过期后的行为</p>
+
+        <!-- 登录获取 Token -->
+        <div class="section">
+            <h2>🔑 步骤 1: 登录获取 Token</h2>
+            <div class="input-group">
+                <label>邮箱:</label>
+                <input type="email" id="loginEmail" value="ury@example.com">
+            </div>
+            <div class="input-group">
+                <label>密码:</label>
+                <input type="password" id="loginPassword" value="111111">
+            </div>
+            <button onclick="login()">登录</button>
+            <button class="btn-secondary" onclick="register()">注册新账号</button>
+            <div id="loginResult"></div>
+        </div>
+
+        <!-- Token 信息 -->
+        <div class="section" id="tokenSection" style="display: none;">
+            <h2>📊 Token 信息</h2>
+            <div class="token-info">
+                <div class="info-card">
+                    <h3>Token 状态</h3>
+                    <p id="tokenStatus">-</p>
+                </div>
+                <div class="info-card">
+                    <h3>已使用时间</h3>
+                    <p id="tokenAge">-</p>
+                </div>
+                <div class="info-card">
+                    <h3>签发时间</h3>
+                    <p id="tokenIssued">-</p>
+                </div>
+                <div class="info-card">
+                    <h3>过期时间</h3>
+                    <p id="tokenExpiry">-</p>
+                </div>
+            </div>
+            <div class="timer" id="remainingTime">--:--:--</div>
+            <button onclick="decodeToken()">解析 Token</button>
+            <button class="btn-secondary" onclick="checkTokenValidity()">验证 Token</button>
+            <button class="btn-danger" onclick="clearToken()">清除 Token</button>
+            <div id="tokenDecoded"></div>
+        </div>
+
+        <!-- 自动测试 -->
+        <div class="section">
+            <h2>🧪 步骤 2: 自动过期测试</h2>
+            <div class="input-group">
+                <label>测试间隔（秒）:</label>
+                <input type="number" id="testInterval" value="30" min="10" max="300">
+            </div>
+            <div class="input-group">
+                <label>测试新闻 ID:</label>
+                <input type="number" id="testNewsId" value="20">
+            </div>
+            <button onclick="startAutoTest()" id="startBtn">开始自动测试</button>
+            <button class="btn-danger" onclick="stopAutoTest()" id="stopBtn" disabled>停止测试</button>
+            <div id="autoTestResult"></div>
+            <div id="testLog"></div>
+        </div>
+
+        <!-- 手动测试 -->
+        <div class="section">
+            <h2>🎯 步骤 3: 手动测试投票 API</h2>
+            <div class="input-group">
+                <label>新闻 ID:</label>
+                <input type="number" id="manualNewsId" value="20">
+            </div>
+            <div class="input-group">
+                <label>投票选项:</label>
+                <select id="voteValue">
+                    <option value="FAKE">FAKE (假新闻)</option>
+                    <option value="NOT_FAKE">NOT_FAKE (真新闻)</option>
+                </select>
+            </div>
+            <button onclick="testVote()">提交投票</button>
+            <button class="btn-secondary" onclick="testGetStats()">获取统计</button>
+            <button class="btn-secondary" onclick="testGetNews()">获取新闻详情</button>
+            <div id="manualTestResult"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080';
+        let token = localStorage.getItem('token') || '';
+        let tokenIssuedAt = null;
+        let tokenExpiresAt = null;
+        let autoTestTimer = null;
+        let countdownTimer = null;
+        let testCount = 0;
+
+        function showResult(elementId, message, type = 'info', json = null) {
+            const element = document.getElementById(elementId);
+            let html = `<div class="result ${type}">${message}`;
+            if (json) {
+                html += `<pre>${JSON.stringify(json, null, 2)}</pre>`;
+            }
+            html += '</div>';
+            element.innerHTML = html;
+        }
+
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = `[${timestamp}] ${message}`;
+            log.insertBefore(entry, log.firstChild);
+        }
+
+        async function register() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                showResult('loginResult', '正在注册...', 'info');
+                
+                const response = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                        name: email.split('@')[0],
+                        imageUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    token = result.data?.token || result.token;
+                    localStorage.setItem('token', token);
+                    showResult('loginResult', '✅ 注册成功！Token 已保存', 'success', result);
+                    updateTokenInfo();
+                } else {
+                    showResult('loginResult', `❌ 注册失败: ${result.message}`, 'error', result);
+                }
+            } catch (error) {
+                showResult('loginResult', `❌ 注册失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                showResult('loginResult', '正在登录...', 'info');
+                
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    token = result.data?.token || result.token;
+                    localStorage.setItem('token', token);
+                    showResult('loginResult', '✅ 登录成功！Token 已保存', 'success', result);
+                    updateTokenInfo();
+                    addLog('登录成功，Token 已获取', 'success');
+                } else {
+                    showResult('loginResult', `❌ 登录失败: ${result.message}`, 'error', result);
+                    addLog(`登录失败: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showResult('loginResult', `❌ 登录失败: ${error.message}`, 'error');
+                addLog(`登录失败: ${error.message}`, 'error');
+            }
+        }
+
+        function decodeToken() {
+            if (!token) {
+                showResult('tokenDecoded', '❌ 没有 Token，请先登录', 'error');
+                return;
+            }
+
+            try {
+                const parts = token.split('.');
+                if (parts.length !== 3) {
+                    throw new Error('Token 格式不正确');
+                }
+
+                const payload = JSON.parse(atob(parts[1]));
+                
+                // 计算时间
+                tokenIssuedAt = payload.iat ? new Date(payload.iat * 1000) : new Date();
+                tokenExpiresAt = payload.exp ? new Date(payload.exp * 1000) : null;
+                
+                const info = {
+                    subject: payload.sub,
+                    issuedAt: tokenIssuedAt.toLocaleString(),
+                    expiresAt: tokenExpiresAt ? tokenExpiresAt.toLocaleString() : '未设置',
+                    validFor: tokenExpiresAt ? Math.floor((tokenExpiresAt - tokenIssuedAt) / 1000 / 60) + ' 分钟' : '未设置',
+                    payload: payload
+                };
+
+                showResult('tokenDecoded', '✅ Token 解析成功', 'success', info);
+                startCountdown();
+            } catch (error) {
+                showResult('tokenDecoded', `❌ 解析失败: ${error.message}`, 'error');
+            }
+        }
+
+        function updateTokenInfo() {
+            if (!token) return;
+            
+            document.getElementById('tokenSection').style.display = 'block';
+            decodeToken();
+        }
+
+        function startCountdown() {
+            if (countdownTimer) clearInterval(countdownTimer);
+            
+            countdownTimer = setInterval(() => {
+                if (!tokenExpiresAt) {
+                    document.getElementById('remainingTime').textContent = '未知过期时间';
+                    return;
+                }
+
+                const now = new Date();
+                const remaining = tokenExpiresAt - now;
+                
+                if (remaining <= 0) {
+                    document.getElementById('remainingTime').textContent = '已过期';
+                    document.getElementById('remainingTime').className = 'timer warning';
+                    document.getElementById('tokenStatus').textContent = '❌ 已过期';
+                    clearInterval(countdownTimer);
+                    return;
+                }
+
+                const hours = Math.floor(remaining / 1000 / 60 / 60);
+                const minutes = Math.floor((remaining / 1000 / 60) % 60);
+                const seconds = Math.floor((remaining / 1000) % 60);
+                
+                document.getElementById('remainingTime').textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                if (remaining < 300000) { // 小于5分钟
+                    document.getElementById('remainingTime').className = 'timer warning';
+                }
+
+                // 更新其他信息
+                const age = Math.floor((now - tokenIssuedAt) / 1000 / 60);
+                document.getElementById('tokenAge').textContent = age + ' 分钟';
+                document.getElementById('tokenStatus').textContent = '✅ 有效';
+                document.getElementById('tokenIssued').textContent = tokenIssuedAt.toLocaleTimeString();
+                document.getElementById('tokenExpiry').textContent = tokenExpiresAt.toLocaleTimeString();
+            }, 1000);
+        }
+
+        async function checkTokenValidity() {
+            if (!token) {
+                showResult('tokenDecoded', '❌ 没有 Token', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/news/1`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.ok) {
+                    showResult('tokenDecoded', '✅ Token 有效！', 'success');
+                    addLog('Token 验证成功', 'success');
+                } else if (response.status === 401 || response.status === 403) {
+                    showResult('tokenDecoded', '❌ Token 无效或已过期', 'error');
+                    addLog('Token 已失效', 'error');
+                } else {
+                    showResult('tokenDecoded', `⚠️ 服务器响应: ${response.status}`, 'warning');
+                }
+            } catch (error) {
+                showResult('tokenDecoded', `❌ 验证失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testVote() {
+            if (!token) {
+                showResult('manualTestResult', '❌ 请先登录获取 Token', 'error');
+                return;
+            }
+
+            const newsId = document.getElementById('manualNewsId').value;
+            const voteValue = document.getElementById('voteValue').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/news/${newsId}/votes`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ value: voteValue })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('manualTestResult', `✅ 投票成功！状态码: ${response.status}`, 'success', result);
+                    addLog(`投票成功 (${voteValue})`, 'success');
+                } else if (response.status === 401 || response.status === 403) {
+                    showResult('manualTestResult', `❌ Token 无效 (${response.status})`, 'error', result);
+                    addLog(`Token 已失效 - ${response.status}`, 'error');
+                } else {
+                    showResult('manualTestResult', `⚠️ 投票失败: ${result.message}`, 'warning', result);
+                    addLog(`投票失败: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showResult('manualTestResult', `❌ 请求失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testGetStats() {
+            if (!token) {
+                showResult('manualTestResult', '❌ 请先登录获取 Token', 'error');
+                return;
+            }
+
+            const newsId = document.getElementById('manualNewsId').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/news/${newsId}/votes`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('manualTestResult', '✅ 获取统计成功', 'success', result);
+                    addLog('获取投票统计成功', 'success');
+                } else if (response.status === 401 || response.status === 403) {
+                    showResult('manualTestResult', `❌ Token 无效 (${response.status})`, 'error', result);
+                    addLog(`Token 已失效 - ${response.status}`, 'error');
+                } else {
+                    showResult('manualTestResult', `⚠️ 获取失败: ${result.message}`, 'warning', result);
+                }
+            } catch (error) {
+                showResult('manualTestResult', `❌ 请求失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testGetNews() {
+            if (!token) {
+                showResult('manualTestResult', '❌ 请先登录获取 Token', 'error');
+                return;
+            }
+
+            const newsId = document.getElementById('manualNewsId').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/news/${newsId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('manualTestResult', '✅ 获取新闻成功', 'success', result);
+                    addLog('获取新闻详情成功', 'success');
+                } else if (response.status === 401 || response.status === 403) {
+                    showResult('manualTestResult', `❌ Token 无效 (${response.status})`, 'error', result);
+                    addLog(`Token 已失效 - ${response.status}`, 'error');
+                } else {
+                    showResult('manualTestResult', `⚠️ 获取失败`, 'warning', result);
+                }
+            } catch (error) {
+                showResult('manualTestResult', `❌ 请求失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function startAutoTest() {
+            if (!token) {
+                alert('请先登录获取 Token');
+                return;
+            }
+
+            const interval = parseInt(document.getElementById('testInterval').value) * 1000;
+            testCount = 0;
+            
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+            
+            showResult('autoTestResult', `🔄 自动测试已启动（每 ${interval/1000} 秒测试一次）`, 'info');
+            addLog('自动测试开始', 'info');
+            
+            // 立即执行第一次测试
+            await runAutoTest();
+            
+            // 定时执行
+            autoTestTimer = setInterval(runAutoTest, interval);
+        }
+
+        async function runAutoTest() {
+            testCount++;
+            const newsId = document.getElementById('testNewsId').value;
+            
+            addLog(`========== 测试 #${testCount} ==========`, 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE}/news/${newsId}/votes`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    addLog(`✅ Token 有效 - 获取投票统计成功 (${response.status})`, 'success');
+                    showResult('autoTestResult', 
+                        `✅ 测试 #${testCount} 通过\nToken 状态: 有效\n最后测试: ${new Date().toLocaleTimeString()}`, 
+                        'success');
+                } else if (response.status === 401 || response.status === 403) {
+                    addLog(`❌ Token 已过期！状态码: ${response.status}`, 'error');
+                    showResult('autoTestResult', 
+                        `❌ Token 已过期！\n在第 ${testCount} 次测试时失效\n过期时间: ${new Date().toLocaleTimeString()}`, 
+                        'error', result);
+                    stopAutoTest();
+                } else {
+                    addLog(`⚠️ 服务器响应异常: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                addLog(`❌ 请求失败: ${error.message}`, 'error');
+            }
+        }
+
+        function stopAutoTest() {
+            if (autoTestTimer) {
+                clearInterval(autoTestTimer);
+                autoTestTimer = null;
+            }
+            
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+            
+            addLog('自动测试停止', 'info');
+        }
+
+        function clearToken() {
+            token = '';
+            localStorage.removeItem('token');
+            tokenIssuedAt = null;
+            tokenExpiresAt = null;
+            
+            if (countdownTimer) clearInterval(countdownTimer);
+            if (autoTestTimer) clearInterval(autoTestTimer);
+            
+            document.getElementById('tokenSection').style.display = 'none';
+            showResult('loginResult', '✅ Token 已清除', 'success');
+        }
+
+        // 页面加载时检查 Token
+        window.onload = () => {
+            if (token) {
+                updateTokenInfo();
+                addLog('检测到已保存的 Token', 'info');
+            }
+        };
+    </script>
+</body>
+</html>

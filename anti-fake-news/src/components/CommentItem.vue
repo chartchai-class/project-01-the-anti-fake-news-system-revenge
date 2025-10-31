@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
 // Comment 不再包含 vote 字段，移除投票相关逻辑
 const voteClass = computed(() => 'status-neutral')
 const voteText = computed(() => 'Comment')
-const voteIcon = computed(() => '�')
+const voteIcon = computed(() => '🗨️')
 const voteColor = computed(() => 'var(--color-text-secondary)')
 
 // 处理图片加载错误
