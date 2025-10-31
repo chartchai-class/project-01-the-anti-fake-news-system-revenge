@@ -50,10 +50,10 @@ const formatDate = (dateString: string) => {
     <div class="flex items-start justify-between mb-3">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center shadow-sm">
-          <span class="text-white text-sm font-semibold">{{ props.comment.author.name.charAt(0).toUpperCase() }}</span>
+          <span class="text-white text-sm font-semibold">{{ props.comment.authorName.charAt(0).toUpperCase() }}</span>
         </div>
         <div>
-          <p class="text-sm font-semibold" style="color: var(--color-text);">{{ props.comment.author.name }}</p>
+          <p class="text-sm font-semibold" style="color: var(--color-text);">{{ props.comment.authorName }}</p>
           <p class="text-xs" style="color: var(--color-text-secondary);">
             {{ formatDate(props.comment.createdAt) }}
           </p>
@@ -82,7 +82,7 @@ const formatDate = (dateString: string) => {
     </div>
 
     <!-- 证据图片 -->
-    <div v-if="props.comment.author.imageUrl" class="mb-4">
+    <div v-if="props.comment.imageUrl" class="mb-4">
       <div class="flex items-center gap-2 mb-2">
         <svg class="w-3.5 h-3.5" style="color: var(--color-text-secondary);" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
@@ -91,8 +91,8 @@ const formatDate = (dateString: string) => {
       </div>
       <div class="relative overflow-hidden rounded-lg border" style="border-color: rgba(94, 82, 64, 0.12);">
         <img 
-          :src="props.comment.author.imageUrl" 
-          :alt="`Evidence provided by ${props.comment.author.name}`"
+          :src="props.comment.imageUrl" 
+          :alt="`Evidence provided by ${props.comment.authorName}`"
           class="w-full h-32 object-cover hover:scale-105 transition-transform duration-200 cursor-pointer"
           @error="handleImageError"
         />
@@ -120,11 +120,11 @@ const formatDate = (dateString: string) => {
         <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background-color: var(--color-gray-200);">
           <div 
             class="h-full rounded-full transition-all duration-500 progress-real"
-            :style="{ width: props.comment.author.imageUrl ? '85%' : '60%' }"
+            :style="{ width: props.comment.imageUrl ? '85%' : '60%' }"
           ></div>
         </div>
         <span class="text-xs font-medium" style="color: var(--color-text);">
-          {{ props.comment.author.imageUrl ? 'High' : 'Medium' }}
+          {{ props.comment.imageUrl ? 'High' : 'Medium' }}
         </span>
       </div>
     </div>
@@ -138,7 +138,7 @@ const formatDate = (dateString: string) => {
           </svg>
           ID: {{ props.comment.id }}
         </span>
-        <span v-if="props.comment.author.imageUrl" class="flex items-center gap-1">
+        <span v-if="props.comment.imageUrl" class="flex items-center gap-1">
           <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
           </svg>

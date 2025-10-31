@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import '@/config/firebase' // 引入 Firebase SDK
+import * as yup from 'yup'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -10,7 +11,20 @@ const authStore = useAuthStore()
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
+const fieldErrors = ref<{ email?: string, password?: string }>({})
 const isLoading = ref(false)
+
+// Yup 验证规则
+const loginSchema = yup.object({
+    email: yup
+        .string()
+        .required('邮箱不能为空')
+        .email('请输入有效的邮箱地址'),
+    password: yup
+        .string()
+        .required('密码不能为空')
+        .min(6, '密码长度至少为 6 个字符')
+})
 
 // 初始化 Firebase (通过导入已自动初始化)
 onMounted(() => {
@@ -18,21 +32,32 @@ onMounted(() => {
 })
 
 const handleLogin = async () => {
-    // 验证：所有字段必填
-    if (!email.value || !password.value) {
-        errorMessage.value = '请填写所有字段'
-        return
-    }
+    // 重置错误信息
+    errorMessage.value = ''
+    fieldErrors.value = {}
 
-    // 验证：邮箱格式
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email.value)) {
-        errorMessage.value = '请输入有效的邮箱地址'
+    try {
+        // Yup 验证
+        await loginSchema.validate(
+            { 
+                email: email.value, 
+                password: password.value 
+            },
+            { abortEarly: false }
+        )
+    } catch (err) {
+        if (err instanceof yup.ValidationError) {
+            // 收集所有字段错误
+            err.inner.forEach(error => {
+                if (error.path) {
+                    fieldErrors.value[error.path as 'email' | 'password'] = error.message
+                }
+            })
+        }
         return
     }
 
     isLoading.value = true
-    errorMessage.value = ''
 
     try {
         // 调用后端登录接口 - 字段完全匹配后端 LoginRequest
@@ -80,10 +105,13 @@ const goToRegister = () => {
                         id="email"
                         v-model="email"
                         type="email"
-                        required
                         placeholder="your@email.com"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.email" class="mt-1 text-sm text-red-600">{{ fieldErrors.email }}</p>
                 </div>
 
                 <div>
@@ -94,10 +122,13 @@ const goToRegister = () => {
                         id="password"
                         v-model="password"
                         type="password"
-                        required
                         placeholder="••••••••"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.password" class="mt-1 text-sm text-red-600">{{ fieldErrors.password }}</p>
                 </div>
 
                 <button

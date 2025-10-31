@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import * as yup from 'yup'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -12,27 +13,65 @@ const password = ref('')
 const confirmPassword = ref('')
 const imageUrl = ref('')
 const errorMessage = ref('')
+const fieldErrors = ref<{ email?: string, name?: string, password?: string, confirmPassword?: string, imageUrl?: string }>({})
 const isLoading = ref(false)
 
+// Yup 验证规则
+const registerSchema = yup.object({
+    email: yup
+        .string()
+        .required('邮箱不能为空')
+        .email('请输入有效的邮箱地址'),
+    name: yup
+        .string()
+        .required('显示名称不能为空')
+        .min(2, '显示名称至少需要 2 个字符')
+        .max(50, '显示名称不能超过 50 个字符'),
+    password: yup
+        .string()
+        .required('密码不能为空')
+        .min(6, '密码长度至少为 6 个字符')
+        .max(100, '密码长度不能超过 100 个字符'),
+    confirmPassword: yup
+        .string()
+        .required('请确认密码')
+        .oneOf([yup.ref('password')], '两次输入的密码不一致'),
+    imageUrl: yup
+        .string()
+        .url('请输入有效的 URL')
+        .nullable()
+})
+
 const handleRegister = async () => {
-    // 表单验证
-    if (!email.value || !name.value || !password.value) {
-        errorMessage.value = '请填写所有必填字段'
-        return
-    }
+    // 重置错误信息
+    errorMessage.value = ''
+    fieldErrors.value = {}
 
-    if (password.value !== confirmPassword.value) {
-        errorMessage.value = '两次输入的密码不一致'
-        return
-    }
-
-    if (password.value.length < 6) {
-        errorMessage.value = '密码长度至少为 6 个字符'
+    try {
+        // Yup 验证
+        await registerSchema.validate(
+            {
+                email: email.value,
+                name: name.value,
+                password: password.value,
+                confirmPassword: confirmPassword.value,
+                imageUrl: imageUrl.value || null
+            },
+            { abortEarly: false }
+        )
+    } catch (err) {
+        if (err instanceof yup.ValidationError) {
+            // 收集所有字段错误
+            err.inner.forEach(error => {
+                if (error.path) {
+                    fieldErrors.value[error.path as keyof typeof fieldErrors.value] = error.message
+                }
+            })
+        }
         return
     }
 
     isLoading.value = true
-    errorMessage.value = ''
 
     try {
         await authStore.register({
@@ -80,10 +119,13 @@ const goToLogin = () => {
                         id="email"
                         v-model="email"
                         type="email"
-                        required
                         placeholder="your@email.com"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.email" class="mt-1 text-sm text-red-600">{{ fieldErrors.email }}</p>
                 </div>
 
                 <div>
@@ -94,10 +136,13 @@ const goToLogin = () => {
                         id="name"
                         v-model="name"
                         type="text"
-                        required
                         placeholder="张三"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.name" class="mt-1 text-sm text-red-600">{{ fieldErrors.name }}</p>
                 </div>
 
                 <div>
@@ -108,10 +153,13 @@ const goToLogin = () => {
                         id="password"
                         v-model="password"
                         type="password"
-                        required
                         placeholder="至少 6 个字符"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.password" class="mt-1 text-sm text-red-600">{{ fieldErrors.password }}</p>
                 </div>
 
                 <div>
@@ -122,10 +170,13 @@ const goToLogin = () => {
                         id="confirmPassword"
                         v-model="confirmPassword"
                         type="password"
-                        required
                         placeholder="再次输入密码"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.confirmPassword ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.confirmPassword" class="mt-1 text-sm text-red-600">{{ fieldErrors.confirmPassword }}</p>
                 </div>
 
                 <div>
@@ -137,8 +188,12 @@ const goToLogin = () => {
                         v-model="imageUrl"
                         type="url"
                         placeholder="https://example.com/avatar.jpg"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                        :class="[
+                            'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent outline-none transition',
+                            fieldErrors.imageUrl ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                        ]"
                     />
+                    <p v-if="fieldErrors.imageUrl" class="mt-1 text-sm text-red-600">{{ fieldErrors.imageUrl }}</p>
                 </div>
 
                 <button

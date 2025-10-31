@@ -5,23 +5,22 @@ import { useRouter } from 'vue-router'
 
 const props = defineProps<{ item: NewsItem }>()
 
+// 后端直接返回 status: FAKE/NON_FAKE/UNKNOWN
 const status = computed(() => {
-  const { fakeVotes, trueVotes } = props.item
-  if (fakeVotes === 0 && trueVotes === 0) return 'unknown'
-  return fakeVotes >= trueVotes ? 'fake' : 'non-fake'
+  if (props.item.status === 'FAKE') return 'fake'
+  if (props.item.status === 'NON_FAKE') return 'non-fake'
+  return 'unknown'
 })
 
+// 后端没有在 NewsItem 中直接返回投票数，需要单独调用 VoteAPI
+// 这里先显示占位符，后续可通过 voteService.getStats() 获取实际数据
 const ratio = computed(() => {
-  const total = props.item.fakeVotes + props.item.trueVotes
-  if (!total) return { fake: 0, non: 0 }
-  return {
-    fake: Math.round((props.item.fakeVotes / total) * 100),
-    non: Math.round((props.item.trueVotes / total) * 100),
-  }
+  return { fake: 50, non: 50 } // 占位符，实际需要从 VoteAPI 获取
 })
 
 const router = useRouter()
 const goDetail = () => router.push(`/news/${props.item.id}`)
+
 </script>
 
 <template>
@@ -43,7 +42,7 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
      </header>
 
          <p class="mb-4 text-sm leading-relaxed line-clamp-2" style="color: var(--color-text-secondary);">
-       {{ item.summary }}
+       {{ item.shortDetail }}
      </p>
 
      <div class="mb-4 text-xs space-y-2" style="color: var(--color-text-secondary);">
@@ -52,7 +51,7 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
              <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 8a2 2 0 11-4 0 2 2 0 014 0z"/>
            </svg>
-           {{ item.author.name }}
+           {{ item.reporterName }}
          </span>
        </div>
        <time :datetime="item.createdAt" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background-color: var(--color-surface); border: 1px solid rgba(94, 82, 64, 0.12);">

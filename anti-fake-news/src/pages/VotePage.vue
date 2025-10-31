@@ -5,6 +5,7 @@ import { newsSeed } from '@/data/news'
 import type { Comment } from '@/types'
 import { useCommentsStore } from '@/stores/comments'
 import { useAuthStore } from '@/stores/auth'
+import * as yup from 'yup'
 
 const route = useRoute()
 const router = useRouter()
@@ -22,98 +23,87 @@ const formData = ref({
 })
 
 // 表单验证状态
-const errors = ref({
-  vote: '',
-  comment: '',
-  imageUrl: ''
-})
+const fieldErrors = ref<{ vote?: string, comment?: string, imageUrl?: string }>({})
 
 // 投票状态
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
 const commentsStore = useCommentsStore()
 
-// 计算属性
-const canSubmit = computed(() => {
-  return formData.value.vote !== '' && !isSubmitting.value
+// Yup 验证规则
+const voteSchema = yup.object({
+  vote: yup
+    .string()
+    .required('请选择您的投票')
+    .oneOf(['Fake', 'Not Fake'], '请选择有效的投票选项'),
+  comment: yup
+    .string()
+    .required('评论不能为空')
+    .min(10, '评论至少需要 10 个字符')
+    .max(500, '评论不能超过 500 个字符'),
+  imageUrl: yup
+    .string()
+    .url('请输入有效的图片 URL')
+    .nullable()
 })
 
-// 表单验证
-const validateForm = () => {
-  errors.value = { vote: '', comment: '', imageUrl: '' }
-  let isValid = true
-
-  if (!formData.value.vote) {
-    errors.value.vote = 'Please select your vote'
-    isValid = false
-  }
-
-  if (formData.value.comment.trim().length === 0) {
-    errors.value.comment = 'Comment is required'
-    isValid = false
-  }
-
-  if (formData.value.imageUrl && !isValidUrl(formData.value.imageUrl)) {
-    errors.value.imageUrl = 'Please enter a valid URL'
-    isValid = false
-  }
-
-  return isValid
-}
-
-// URL 验证
-const isValidUrl = (string: string) => {
-  try {
-    new URL(string)
-    return true
-  } catch (_) {
-    return false
-  }
-}
+// 计算属性
+const canSubmit = computed(() => {
+  return formData.value.vote !== '' && formData.value.comment.trim().length > 0 && !isSubmitting.value
+})
 
 // 提交投票
 const submitVote = async () => {
-  if (!validateForm()) return
+  // 重置错误信息
+  fieldErrors.value = {}
+
+  try {
+    // Yup 验证
+    await voteSchema.validate(
+      {
+        vote: formData.value.vote,
+        comment: formData.value.comment,
+        imageUrl: formData.value.imageUrl || null
+      },
+      { abortEarly: false }
+    )
+  } catch (err) {
+    if (err instanceof yup.ValidationError) {
+      // 收集所有字段错误
+      err.inner.forEach(error => {
+        if (error.path) {
+          fieldErrors.value[error.path as keyof typeof fieldErrors.value] = error.message
+        }
+      })
+    }
+    return
+  }
 
   isSubmitting.value = true
+  
+  // ⚠️ TODO: 重构为使用后端 API
+  // 参考: VOTEPAGE_REFACTOR_TODO.md
   
   // 模拟 API 调用
   await new Promise(resolve => setTimeout(resolve, 1000))
   
-  // 更新本地数据（这里应该调用实际的 API）
-  if (newsItem) {
-    if (formData.value.vote === 'Fake') {
-      newsItem.fakeVotes++
-    } else {
-      newsItem.trueVotes++
-    }
-  }
-
-  // 保存用户评论到 localStorage
+  // ⚠️ 临时禁用：等待后端 API 对接
+  // 正确做法：await voteService.submit(newsId, { value: formData.value.vote === 'Fake' ? 'FAKE' : 'NOT_FAKE' })
+  
+  // 保存用户评论到 localStorage (临时方案)
   const newComment: Comment = {
-    id: Date.now(),  // 改为 number
-    content: formData.value.comment,  // 改为 content
-    author: {  // 改为 author 对象
-      id: authStore.user?.id || 0,
-      name: authStore.displayName,
-      imageUrl: formData.value.imageUrl || authStore.avatarUrl
-    },
-    news: {  // 添加 news 对象
-      id: newsId,
-      title: newsItem?.title || 'Unknown'
-    },
-    isDeleted: false,
-    createdAt: new Date().toISOString()
+    id: Date.now(),
+    newsId: newsId,
+    authorId: authStore.user?.id || 0,
+    authorName: authStore.displayName,
+    content: formData.value.comment,
+    imageUrl: formData.value.imageUrl || authStore.avatarUrl,
+    createdAt: new Date().toISOString(),
+    deleted: false
   }
 
   // 使用 Pinia 评论 store 持久化
   commentsStore.add(newsId, newComment)
-
-  // 更新新闻投票数据到 localStorage
-  const newsData = JSON.parse(localStorage.getItem(`news_${newsId}`) || '{}')
-  newsData.fakeVotes = newsItem?.fakeVotes || 0
-  newsData.trueVotes = newsItem?.trueVotes || 0
-  localStorage.setItem(`news_${newsId}`, JSON.stringify(newsData))
 
   isSubmitting.value = false
   showSuccess.value = true
@@ -132,7 +122,7 @@ const goBackToNews = () => {
 // 重置表单
 const resetForm = () => {
   formData.value = { vote: '', comment: '', imageUrl: '' }
-  errors.value = { vote: '', comment: '', imageUrl: '' }
+  fieldErrors.value = {}
 }
 </script>
 
@@ -230,7 +220,7 @@ const resetForm = () => {
               <span class="text-sm font-medium" style="color: var(--color-text);">Fake News</span>
             </label>
           </div>
-          <p v-if="errors.vote" class="text-sm text-red-500">{{ errors.vote }}</p>
+          <p v-if="fieldErrors.vote" class="text-sm text-red-500">{{ fieldErrors.vote }}</p>
         </div>
 
         <!-- 评论 -->
@@ -241,11 +231,11 @@ const resetForm = () => {
           <textarea 
             v-model="formData.comment"
             class="w-full px-4 py-3 rounded-xl border resize-none focus:outline-none focus:ring-2 transition-all duration-200" 
-            :class="{ 'border-red-500': errors.comment }"
+            :class="{ 'border-red-500': fieldErrors.comment }"
             style="border-color: rgba(94, 82, 64, 0.12); background-color: var(--color-surface); color: var(--color-text); --tw-ring-color: var(--color-primary);"
             rows="4" 
             placeholder="Please enter your comment..."></textarea>
-          <p v-if="errors.comment" class="text-sm text-red-500">{{ errors.comment }}</p>
+          <p v-if="fieldErrors.comment" class="text-sm text-red-500">{{ fieldErrors.comment }}</p>
         </div>
 
         <!-- 图片链接 -->
@@ -255,10 +245,10 @@ const resetForm = () => {
             v-model="formData.imageUrl"
             type="url" 
             class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 transition-all duration-200" 
-            :class="{ 'border-red-500': errors.imageUrl }"
+            :class="{ 'border-red-500': fieldErrors.imageUrl }"
             style="border-color: rgba(94, 82, 64, 0.12); background-color: var(--color-surface); color: var(--color-text); --tw-ring-color: var(--color-primary);"
             placeholder="https://example.com/image.jpg">
-          <p v-if="errors.imageUrl" class="text-sm text-red-500">{{ errors.imageUrl }}</p>
+          <p v-if="fieldErrors.imageUrl" class="text-sm text-red-500">{{ fieldErrors.imageUrl }}</p>
         </div>
 
         <!-- 操作按钮 -->

@@ -1,29 +1,33 @@
 <script setup lang="ts">
 import { computed, ref, watch, onMounted } from 'vue'
-import { newsSeed } from '@/data/news'
+import { newsService } from '@/services/api'
 import type { NewsItem } from '@/types'
 import NewsCard from '@/components/NewsCard.vue'
 import FilterBar, { type FilterKind } from '@/components/FilterBar.vue'
 import Paginator from '@/components/Paginator.vue'
 
-const allNews = ref<NewsItem[]>(newsSeed)
+const allNews = ref<NewsItem[]>([])
 const isLoading = ref(false)
 const loadError = ref<string | null>(null)
+const totalElements = ref(0)
 
-// 尝试从本地 json-server 加载（若失败则回退到内置种子）
-async function fetchNewsFromApi() {
+// 从后端 API 加载新闻列表
+async function fetchNewsFromApi(params?: { page?: number, size?: number, search?: string }) {
   try {
     isLoading.value = true
     loadError.value = null
-    const res = await fetch('http://localhost:4000/news')
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const data = await res.json()
-    if (Array.isArray(data) && data.length > 0) {
-      allNews.value = data as NewsItem[]
-    }
+    
+    const result = await newsService.getAll({
+      page: params?.page || 0,  // 后端从0开始
+      size: params?.size || 100, // 先加载所有数据用于前端过滤
+      search: params?.search
+    })
+    
+    allNews.value = result.content
+    totalElements.value = result.totalElements
   } catch (e: any) {
-    loadError.value = e?.message || 'Failed to load mock api'
-    allNews.value = newsSeed
+    loadError.value = e?.message || 'Failed to load news from backend'
+    console.error('Failed to load news:', e)
   } finally {
     isLoading.value = false
   }
@@ -38,9 +42,14 @@ const filter = ref<FilterKind>('all')
 const pageSize = ref<number>(10)
 const page = ref<number>(1)
 
+// 根据后端投票统计判断新闻状态
+// 注意：后端使用 VoteSummaryResponse，不在 NewsItem 中直接存储投票数
 function statusOf(n: NewsItem) {
-  if (n.fakeVotes === 0 && n.trueVotes === 0) return 'unknown'
-  return n.fakeVotes >= n.trueVotes ? 'fake' : 'non-fake'
+  // 后端通过 NewsStatus 字段返回：FAKE/NON_FAKE/UNKNOWN
+  if (n.status === 'UNKNOWN') return 'unknown'
+  if (n.status === 'FAKE') return 'fake'
+  if (n.status === 'NON_FAKE') return 'non-fake'
+  return 'unknown'
 }
 
 const filtered = computed(() => {
@@ -71,11 +80,11 @@ watch([filter, pageSize], () => {page.value = 1})
       <FilterBar v-model="filter" v-model:pageSize="pageSize" />
     </div>
 
-    <div v-if="isLoading" class="text-center py-10 text-sm" style="color: var(--color-text-secondary);">Loading from mock API...</div>
-    <div v-else-if="loadError" class="text-center py-10 text-sm" style="color: var(--color-text-secondary);">
-      Mock API unavailable. Showing built-in seed data.
+    <div v-if="isLoading" class="text-center py-10 text-sm" style="color: var(--color-text-secondary);">Loading news from backend...</div>
+    <div v-else-if="loadError" class="text-center py-10 text-sm text-red-500">
+      Error: {{ loadError }}
     </div>
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+    <div v-else class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
       <NewsCard v-for="n in items" :key="n.id" :item="n" />
     </div>
 
