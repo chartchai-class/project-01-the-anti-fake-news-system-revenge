@@ -34,6 +34,18 @@ const goToAdminUsers = () => {
 const goToHome = () => {
     router.push('/')
 }
+
+const goToCreateNews = () => {
+    router.push('/create-news')
+}
+
+const goToProfile = () => {
+    router.push('/profile')
+}
+
+const goToVoteAnalytics = () => {
+    router.push('/vote-analytics')
+}
 </script>
 
 <template>
@@ -53,8 +65,24 @@ const goToHome = () => {
 
                 <!-- User Menu -->
                 <div class="flex items-center gap-4">
+                    <!-- Vote Analytics (Public) -->
+                    <button
+                        @click="goToVoteAnalytics"
+                        class="px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg transition font-medium text-sm"
+                    >
+                        📊 Vote Analytics
+                    </button>
+
                     <!-- Logged in state -->
                     <template v-if="isAuthenticated && currentUser">
+                        <!-- Create News Button -->
+                        <button
+                            @click="goToCreateNews"
+                            class="px-4 py-2 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-lg transition font-medium text-sm"
+                        >
+                            ✍️ Create News
+                        </button>
+
                         <!-- Admin Button -->
                         <button
                             v-if="isAdmin"
@@ -65,7 +93,9 @@ const goToHome = () => {
                         </button>
 
                         <!-- User Info -->
-                        <div class="flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-lg">
+                        <button
+                            @click="goToProfile"
+                            class="flex items-center gap-3 px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200">
                             <img
                                 :src="avatarUrl"
                                 :alt="displayName"
@@ -88,7 +118,7 @@ const goToHome = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </button>
 
                         <!-- Logout Button -->
                         <button

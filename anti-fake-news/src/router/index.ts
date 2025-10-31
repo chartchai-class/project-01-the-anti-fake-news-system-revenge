@@ -3,6 +3,9 @@ import { useAuthStore } from '@/stores/auth'
 import Home from '@/pages/Home.vue'
 import NewsDetails from '@/pages/NewsDetails.vue'
 import VotePage from '@/pages/VotePage.vue'
+import VoteAnalytics from '@/pages/VoteAnalytics.vue'
+import CreateNews from '@/pages/CreateNews.vue'
+import Profile from '@/pages/Profile.vue'
 import Login from '@/pages/Login.vue'
 import Register from '@/pages/Register.vue'
 import AdminUsers from '@/pages/AdminUsers.vue'
@@ -32,6 +35,32 @@ const router = createRouter({
             component: VotePage,
             meta: {
                 title: 'Participate in Voting',
+                requiresAuth: true  // 需要登录
+            }
+        },
+        {
+            path: '/vote-analytics',
+            name: 'VoteAnalytics',
+            component: VoteAnalytics,
+            meta: {
+                title: 'Vote Analytics'
+            }
+        },
+        {
+            path: '/create-news',
+            name: 'CreateNews',
+            component: CreateNews,
+            meta: {
+                title: 'Create News',
+                requiresAuth: true  // 需要登录
+            }
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
+            meta: {
+                title: 'Edit Profile',
                 requiresAuth: true  // 需要登录
             }
         },

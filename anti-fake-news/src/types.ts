@@ -24,6 +24,13 @@ export interface LoginRequest {
     password: string
 }
 
+export interface UpdateProfileRequest {
+    name?: string
+    imageUrl?: string
+    currentPassword?: string
+    newPassword?: string
+}
+
 export interface AuthResponse {
     token: string
 }

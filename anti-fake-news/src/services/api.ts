@@ -1,6 +1,6 @@
 // src/services/api.ts
 import type { 
-    User, RegisterRequest, LoginRequest, AuthResponse, Role,
+    User, RegisterRequest, LoginRequest, AuthResponse, UpdateProfileRequest, Role,
     NewsItem, NewsCreateRequest, NewsStatus,
     Comment, CommentCreateRequest,
     VoteRequest, VoteResponse
@@ -103,6 +103,27 @@ export const authService = {
 
         const result = await response.json()
         // 后端返回 { success: true, data: User对象 }
+        return result.data || result
+    },
+
+    /**
+     * 更新当前用户信息 (需要认证)
+     * 后端端点：PUT /auth/profile
+     * @param data 更新的用户信息
+     * @returns 更新后的User对象
+     */
+    async updateProfile(data: UpdateProfileRequest): Promise<User> {
+        const response = await fetchWithAuth(`${API_BASE_URL}/auth/profile`, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        })
+
+        if (!response.ok) {
+            const error = await response.text()
+            throw new Error(error || 'Failed to update profile')
+        }
+
+        const result = await response.json()
         return result.data || result
     },
 

@@ -10,7 +10,9 @@
     "start:all": "npm run gen:db && concurrently \"npm run api\" \"npm run dev\"",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && firebase deploy --only hosting"
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "check:env": "node scripts/check-env.mjs",
+    "setup": "npm install && npm run check:env"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",

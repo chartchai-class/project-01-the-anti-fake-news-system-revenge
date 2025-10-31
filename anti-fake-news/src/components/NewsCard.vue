@@ -1,26 +1,54 @@
 <script setup lang="ts">
 import type { NewsItem } from '@/types'
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { voteService } from '@/services/api'
 
 const props = defineProps<{ item: NewsItem }>()
 
-// 后端直接返回 status: FAKE/NON_FAKE/UNKNOWN
+// Vote statistics
+const fakeVotes = ref(0)
+const notFakeVotes = ref(0)
+const isLoadingVotes = ref(false)
+
+// Load vote statistics
+onMounted(async () => {
+  try {
+    isLoadingVotes.value = true
+    const stats = await voteService.getStats(props.item.id)
+    fakeVotes.value = stats.fakeCount || 0
+    notFakeVotes.value = stats.notFakeCount || 0
+  } catch (error) {
+    console.error('Failed to load vote stats:', error)
+  } finally {
+    isLoadingVotes.value = false
+  }
+})
+
+// Backend returns status: FAKE/NON_FAKE/UNKNOWN
 const status = computed(() => {
   if (props.item.status === 'FAKE') return 'fake'
   if (props.item.status === 'NON_FAKE') return 'non-fake'
   return 'unknown'
 })
 
-// 后端没有在 NewsItem 中直接返回投票数，需要单独调用 VoteAPI
-// 这里先显示占位符，后续可通过 voteService.getStats() 获取实际数据
-const ratio = computed(() => {
-  return { fake: 50, non: 50 } // 占位符，实际需要从 VoteAPI 获取
+// Calculate vote ratio
+const totalVotes = computed(() => fakeVotes.value + notFakeVotes.value)
+const fakePercentage = computed(() => 
+  totalVotes.value > 0 ? Math.round((fakeVotes.value / totalVotes.value) * 100) : 0
+)
+const realPercentage = computed(() => 
+  totalVotes.value > 0 ? Math.round((notFakeVotes.value / totalVotes.value) * 100) : 0
+)
+
+// Determine dominant vote
+const voteStatus = computed(() => {
+  if (totalVotes.value === 0) return 'unknown'
+  return fakeVotes.value > notFakeVotes.value ? 'fake' : 'real'
 })
 
 const router = useRouter()
 const goDetail = () => router.push(`/news/${props.item.id}`)
-
 </script>
 
 <template>
@@ -64,13 +92,34 @@ const goDetail = () => router.push(`/news/${props.item.id}`)
 
     <div class="mb-6">
       <div class="mb-2 flex justify-between text-xs font-medium" style="color: var(--color-text-secondary);">
-        <span>Fake {{ ratio.fake }}%</span>
-        <span>Real {{ ratio.non }}%</span>
+        <span>🔴 Fake {{ fakePercentage }}% ({{ fakeVotes }})</span>
+        <span>🟢 Real {{ realPercentage }}% ({{ notFakeVotes }})</span>
       </div>
-      <div class="h-2 w-full rounded-full overflow-hidden" style="background-color: var(--color-gray-200);">
-        <div class="h-full rounded-full transition-all duration-1000 ease-out" 
-             :class="status === 'fake' ? 'progress-fake' : 'progress-real'"
-             :style="{ width: (status === 'fake' ? ratio.fake : ratio.non) + '%' }"></div>
+      <div v-if="isLoadingVotes" class="h-2 w-full rounded-full overflow-hidden animate-pulse" style="background-color: var(--color-gray-200);"></div>
+      <div v-else class="h-2 w-full rounded-full overflow-hidden flex" style="background-color: var(--color-gray-200);">
+        <div 
+          v-if="fakeVotes > 0"
+          class="h-full progress-fake transition-all duration-1000 ease-out" 
+          :style="{ width: fakePercentage + '%' }">
+        </div>
+        <div 
+          v-if="notFakeVotes > 0"
+          class="h-full progress-real transition-all duration-1000 ease-out" 
+          :style="{ width: realPercentage + '%' }">
+        </div>
+      </div>
+      <div v-if="totalVotes > 0" class="mt-2 text-center">
+        <span class="text-xs font-medium px-2 py-1 rounded-full"
+              :class="{
+                'bg-red-100 text-red-700': voteStatus === 'fake',
+                'bg-green-100 text-green-700': voteStatus === 'real',
+                'bg-gray-100 text-gray-700': voteStatus === 'unknown'
+              }">
+          Community: {{ voteStatus === 'fake' ? 'Likely Fake' : voteStatus === 'real' ? 'Likely Real' : 'Undecided' }}
+        </span>
+      </div>
+      <div v-else class="mt-2 text-center text-xs" style="color: var(--color-text-secondary);">
+        No votes yet - Be the first to vote!
       </div>
     </div>
 

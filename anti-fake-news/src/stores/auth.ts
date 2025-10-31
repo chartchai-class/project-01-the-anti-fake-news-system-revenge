@@ -1,6 +1,6 @@
 // src/stores/auth.ts
 import { defineStore } from 'pinia'
-import type { User, RegisterRequest, LoginRequest } from '@/types'
+import type { User, RegisterRequest, LoginRequest, UpdateProfileRequest } from '@/types'
 import { authService, roleUtils } from '@/services/api'
 
 interface AuthState {
@@ -178,6 +178,25 @@ export const useAuthStore = defineStore('auth', {
          */
         clearError(): void {
             this.error = null
+        },
+
+        /**
+         * 更新用户个人信息
+         */
+        async updateProfile(data: UpdateProfileRequest): Promise<void> {
+            this.loading = true
+            this.error = null
+
+            try {
+                const updatedUser = await authService.updateProfile(data)
+                this.user = updatedUser
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser))
+            } catch (err) {
+                this.error = err instanceof Error ? err.message : 'Failed to update profile'
+                throw err
+            } finally {
+                this.loading = false
+            }
         }
     }
 })
